@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PostPicture from '@/components/postPicture.vue'
+import EditPicture from '@/components/editPicture.vue'
+import DataShow from "@/components/dataShow.vue"
 
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    component: PostPicture
+    path: '/edit_picture',
+    component: EditPicture
 
+  },
+  {
+    path: '/',
+    component: DataShow
   }
   
 ]
