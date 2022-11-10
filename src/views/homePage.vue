@@ -1,12 +1,14 @@
 <template>
   <div class="page">
+    <!-- this component will help login the client if there is already an account -->
     <v-app>
+      <!-- container that contains logo and card -->
       <v-container class="grey lighten-3" fill-height fluid>
         <v-layout row wrap justify-center align-center>
           <v-flex xs12 md6 lg4 text-start>
-            <v-card-text class="font-weight-bold text-h1 yellow darken-3">
+            <h1 class="font-weight-bold text-h1 yellow darken-3">
               MyRide.
-            </v-card-text>
+            </h1>
             <h2 class="text-h4">Connecting people and Cities together.</h2>
           </v-flex>
           <v-flex xs10 md6 lg4 text-center>
@@ -33,11 +35,12 @@
                 :type="show ? 'text' : 'password'"
                 @click:append="show = !show"
               ></v-text-field>
-              <v-btn  @click="send_request" class="my-4" large color="success" dark>
+              <!-- this button will send an api request -->
+              <v-btn  @click="send_request" class="my-4" large color="success" dark >
                 Login
               </v-btn>
-              <p v-if="message === undefined">Please enter the valid email and password</p>
-              <p v-if="message !== undefined">{{message}}</p>
+              <p  class="font-weight-bold" v-if="message === undefined">Please enter the valid email and password</p>
+              <p  class="font-weight-bold" v-if="message !== undefined">{{message}}</p>
               <hr />
               <v-btn class="primary my-4">Create an account</v-btn>
             </v-card>
@@ -55,21 +58,26 @@ import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
   methods: {
+    // will make the api request
     send_request() {
       axios
+      // api enpoint
         .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_login`,
         method: 'POST',
         data:{
+          // will grab the email and password model
           email: this.email,
           password: this.password
         }
         
         })
+        // on response we will set the cookies of client_id and token
         .then((response) => {
           cookies.set('client_id',response['data']['client_id'])
           cookies.set('token',response['data']['token'])
           
         })
+      // on error show the message
         .catch((error) => {
           this.message = error['response']['data']
           this.email = undefined,

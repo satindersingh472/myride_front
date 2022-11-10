@@ -15,10 +15,17 @@ const routes = [
       {
         name: "author",
         content: "Satinder Singh"
+      },
+      {
+        name: 'description',
+        content: 'My Ride is the one and only marketplace for rides,it is for the people who want to travel from city to city'
+      },
+      {
+        name: 'keyword',
+        content: 'easy to find rides, people first,accessible,affordable'
       }
     ]
-
-  }
+  },
   
 ]
 
