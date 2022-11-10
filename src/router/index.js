@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from "@/views/homePage.vue"
+import DiscoverRides from "@/views/discoverRides.vue"
 
 Vue.use(VueRouter)
 
@@ -21,11 +22,32 @@ const routes = [
         content: 'My Ride is the one and only marketplace for rides,it is for the people who want to travel from city to city'
       },
       {
-        name: 'keyword',
+        name: 'keywords',
         content: 'easy to find rides, people first,accessible,affordable'
       }
     ]
   },
+  {
+    path: '/discover_rides',
+    component: DiscoverRides,
+    meta:[
+      {
+        title: "MyRides_rides",
+      },
+      {
+        name: "author",
+        content: "Satinder Singh"
+      },
+      {
+        name: 'description',
+        content: 'latest rides from various cities and affordable rides'
+      },
+      {
+        name: 'keywords',
+        content: 'myride,easy,affordable'
+      }
+    ]
+  }
   
 ]
 

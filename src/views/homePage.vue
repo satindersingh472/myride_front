@@ -57,6 +57,11 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
+  mounted () {
+    if(cookies.get('client_id')){
+      this.$router.push('/discover_rides')
+    }
+  },
   methods: {
     // will make the api request
     send_request() {
@@ -75,6 +80,7 @@ export default {
         .then((response) => {
           cookies.set('client_id',response['data']['client_id'])
           cookies.set('token',response['data']['token'])
+          this.$router.push('/discover_rides')
           
         })
       // on error show the message
