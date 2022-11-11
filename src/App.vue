@@ -1,5 +1,5 @@
 <template>
-  <v-app class="" >
+  <v-app >
     <v-main>
       <router-view/>
     </v-main>
@@ -17,5 +17,4 @@ export default {
 };
 </script>
 <style lang=scss >
-
 </style>

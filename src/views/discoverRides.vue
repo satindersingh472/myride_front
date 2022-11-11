@@ -1,15 +1,20 @@
 <template>
   <div>
-    <nav-bar></nav-bar>
+    <!-- <nav-bar></nav-bar> -->
+    <v-row>
+      <v-col cols="auto" class="mr-2">
+        <navigation-page></navigation-page>
+      </v-col>
+      <v-col>
     <v-app>
       <v-container>
         <v-row justify="center" >
           <v-col
-             sm="12" md="10" lg="8" 
+             sm="12" md="10" lg="7" 
             v-for="(detail, index) in details"
             :key="index"
           >
-            <v-card  elevation="8" >
+            <v-card  elevation="8" class="rounded-xl grey lighten-3">
               <v-card-title>
                 <h3 class="text-sm-h4 font-weight-bold " >Departure: {{ detail['from_city']}}</h3> 
               </v-card-title>
@@ -31,17 +36,21 @@
         </v-row>
       </v-container>
     </v-app>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import BookRide from '@/components/bookRide.vue'
 import axios from 'axios'
-import NavBar from '@/components/navBar.vue'
+// import NavBar from '@/components/navBar.vue'
+import NavigationPage from "@/components/navigationPage.vue"
 export default {
   components: {
     BookRide,
-    NavBar,
+    // NavBar,
+    NavigationPage
   },
   mounted() {
     this.get_rides()

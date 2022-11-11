@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div> 
+    <v-app-bar>
     <div class="mobile_view">
-      <v-toolbar v-if="mobile_view === true" class="yellow darken-3">
+      <div v-if="mobile_view === true" class="yellow darken-3">
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      </v-toolbar>
-      <v-navigation-drawer absolute temporary left v-model="drawer">
+      </div>
+      <div>
         <v-list>
           <v-list-item-group active-class="yellow darken-3">
             <v-list-item>
@@ -15,22 +16,21 @@
             </v-list-item>
           </v-list-item-group>
         </v-list>
-      </v-navigation-drawer>
+      </div>
     </div>
     <div v-if="mobile_view === false">
       <v-toolbar class="yellow darken-3">
-        <v-row class="mx-6 text-h5"  align="center" justify="center">
-          <v-col md="6" sm="6" >
-            <v-text justify-self="end" class="font-weight-bold">MyRide</v-text>
+        <v-row class="mx-6 text-h5" align="center">
+          <v-col cols="6">
+            <v-text  class="font-weight-bold">MyRide</v-text>
           </v-col>
-          <v-col>
-
+          <v-col cols="6" style="display:grid;" >
+            <v-btn  style="justify-self:end;"  small class="grey lighten-2">Logout</v-btn>
           </v-col>
-        
         </v-row>
       </v-toolbar>
     </div>
-
+    </v-app-bar>
   </div>
 </template>
 

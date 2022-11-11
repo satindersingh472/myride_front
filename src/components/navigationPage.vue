@@ -1,0 +1,92 @@
+<template>
+  <div>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant.sync="shrink"
+      mini-variant-width="100px"
+      absolute
+    >
+      <v-list class="text-h6">
+        <v-list-item-group >
+            <v-row justify="center" align="center" style="height:60px;">
+                     <v-icon @click.stop="shrink = !shrink">mdi-chevron-left</v-icon>
+            </v-row>
+            <v-row justify="center" class="my-4" >
+              <v-avatar class="grey"></v-avatar>
+            </v-row>
+          <v-list-item style="text-align:center;" >
+            <v-list-item-title class="text-h6">User</v-list-item-title>
+          </v-list-item>
+          <v-divider />
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon color="blue" x-large>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon color="blue darken-3" x-large>mdi-car-search</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>
+              Find Rides
+            </v-list-item-title>
+          </v-list-item>
+          <v-divider />
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon x-large color="green">mdi-alpha-r-circle-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>
+              Posted Rides
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-icon x-large color="yellow darken-3">
+              mdi-alpha-b-circle-outline
+            </v-icon>
+            <v-list-item-title class="ml-6" >
+              Booked Rides
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-icon x-large color="black">
+              mdi-logout
+            </v-icon>
+            <v-list-item-title class="ml-6" >
+              Logout
+            </v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  </div>
+</template>
+
+<script>
+export default {
+  //   mounted() {
+  //     this.screen_size()
+  //     window.addEventListener('resize', this.screen_size)
+  //   },
+
+  //   methods: {
+  //     screen_size() {
+  //       if (document.documentElement.clientWidth < 1400) {
+  //         this.mini = true
+  //       } else if (document.documentElement.clientWidth >= 1400) {
+  //         this.mini = false
+  //       }
+  //     },
+  //   },
+  data() {
+    return {
+      shrink: true,
+      drawer: true,
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped></style>
