@@ -6,7 +6,7 @@
         MyRide
       </v-app-title>
       <v-spacer />
-      <v-list-item-avatar ref="avatar" class="grey">
+      <v-list-item-avatar size="55" class="mr-6 ">
     <v-img :src="image"></v-img>
       </v-list-item-avatar>
     </v-app-bar>

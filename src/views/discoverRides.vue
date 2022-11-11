@@ -16,11 +16,11 @@
               >
                 <v-card elevation="8" class="rounded-xl grey lighten-3">
                   <v-card-title>
-                    <h3 class="text-sm-h4 font-weight-bold">
-                      Departure: {{ detail['from_city'] }}
-                    </h3>
+                    <p class="text-sm-h4 font-weight-bold">
+                      From : {{ detail['from_city'] }}
+                    </p>
                   </v-card-title>
-                  <v-card-subtitle>
+                  <v-card-subtitle class="text-sm-h5" >
                     <h2>Arrival: {{ detail['to_city'] }}</h2>
                   </v-card-subtitle>
                   <div class="mx-4">
