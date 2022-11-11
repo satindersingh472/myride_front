@@ -21,8 +21,7 @@
         <v-card-text class="text-h6" >
             <p v-if="message !== undefined" >{{message}}</p>
                 <div v-if="message === undefined" >
-                <p>Please arrive 15 mins prior to departure. 
-                2 Pieces of luggage is allowed Onboard. 
+                <p> 
                 Press Confirm to Book a ride or cancel to go back.Your booking id will be sent to you via email.
                 For further inquiries please email me at
                 </p>
@@ -65,7 +64,7 @@ export default {
         })
         // on success booking id will be shown and button will be disabled
         .then((response) => {
-          this.message =  `Your booking Id is: ${response['data']['booking_id']}}`
+          this.message =  `Your booking Id is: ${response['data']['booking_id']}`
           this.disabled = true
         })
         // on error the message will be displayed and it will disapper at 1500 milliseconds

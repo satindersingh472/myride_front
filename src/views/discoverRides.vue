@@ -10,13 +10,13 @@
           >
             <v-card  elevation="8" >
               <v-card-title>
-                <h3>Departure: {{ detail['from_city']}}</h3> 
+                <h3 class="text-sm-h4 font-weight-bold " >Departure: {{ detail['from_city']}}</h3> 
               </v-card-title>
               <v-card-subtitle>
                 <h2>Arrival: {{detail['to_city']}}</h2>
               </v-card-subtitle>
               <div class="mx-4">
-                <h3>Transporter: {{ detail['rider_first_name'] }}</h3>
+                <h2>Transporter: {{ detail['rider_first_name'] }}</h2>
               </div>
               <div class="mx-4">
                 <h3>Departure Date: {{ detail['travel_date'] }}</h3>
