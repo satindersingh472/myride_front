@@ -1,18 +1,23 @@
 <template>
   <div>
+    <!-- dialog box will appear when button is clicked -->
     <v-dialog  transition="dialog-bottom-transition" v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
+        <!-- when this button is clicked the dialog box will appear -->
         <v-btn class="ma-3" color="success" dark v-bind="attrs" v-on="on">
           Book Ride
         </v-btn>
       </template>
    
      <v-card>
+        <!-- v-card is actually a dialogue box containing a message and confirmation button
+        for sending api request and go back button -->
         <v-toolbar class="yellow darken-3" >
            <v-card-title>
-          Confirmation
+          Terms and Conditions
         </v-card-title>
         </v-toolbar>
+        <!-- just a text to display inside the box and on success the booking will be displayed -->
         <v-card-text class="text-h6" >
             <p v-if="message !== undefined" >{{message}}</p>
                 <div v-if="message === undefined" >
@@ -26,7 +31,9 @@
         </v-card-text>
             <v-card-actions>
           <v-spacer></v-spacer>
+          <!-- three different events are attached to this button -->
           <v-btn @click="dialog = false; message = undefined; disabled = false" class="my-4 red">Go Back</v-btn>
+          <!-- this button will send an api request and will be disabled on success response from api -->
          <v-btn @click="send_request" :disabled ="disabled" v-model="disabled" class="my-4 success">Confirm</v-btn>
         </v-card-actions>
         </v-card>
@@ -47,6 +54,7 @@ export default {
     detail: Object,
   },
   methods: {
+    // will send a request with valid header and data arguments
     send_request() {
       axios
         .request({
@@ -55,11 +63,12 @@ export default {
           headers: { token: cookies.get('token') },
           data: { ride_id: this.detail['ride_id'] },
         })
+        // on success booking id will be shown and button will be disabled
         .then((response) => {
-          cookies.set('booking_id', response['data']['booking_id'])
-          this.message =  `Your booking Id is: ${cookies.get('booking_id')}`
+          this.message =  `Your booking Id is: ${response['data']['booking_id']}}`
           this.disabled = true
         })
+        // on error the message will be displayed and it will disapper at 1500 milliseconds
         .catch((error) => {
           this.message = error['response']['data']
           setTimeout(() => {
