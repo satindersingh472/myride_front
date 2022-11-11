@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from "@/views/homePage.vue"
 import DiscoverRides from "@/views/discoverRides.vue"
+import RoughPage from "@/views/roughPage.vue"
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,10 @@ const routes = [
         content: 'myride,easy,affordable'
       }
     ]
+  },
+  {
+    path: '/rough_page',
+    component: RoughPage
   }
   
 ]

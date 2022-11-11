@@ -1,5 +1,6 @@
 <template>
   <div>
+    <nav-bar></nav-bar>
     <v-app>
       <v-container>
         <v-row justify="center" >
@@ -36,9 +37,11 @@
 <script>
 import BookRide from '@/components/bookRide.vue'
 import axios from 'axios'
+import NavBar from '@/components/navBar.vue'
 export default {
   components: {
     BookRide,
+    NavBar,
   },
   mounted() {
     this.get_rides()
