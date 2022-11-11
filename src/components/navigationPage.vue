@@ -1,33 +1,22 @@
 <template>
   <div>
-    <v-app-bar app  clipped-left>
-        <v-app-title class="text-h4 font-weight-bold yellow--text text--darken-3" >MyRide</v-app-title>
+    <v-app-bar app clipped-left>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-title class="text-h4 font-weight-bold yellow--text text--darken-3">
+        MyRide
+      </v-app-title>
+      <v-spacer />
+      <v-list-item-avatar ref="avatar" class="grey">
+    <v-img :src="image"></v-img>
+      </v-list-item-avatar>
     </v-app-bar>
 
-
-
-    <v-navigation-drawer
-    app
-      v-model="drawer"
-      :mini-variant.sync="shrink"
-      mini-variant-width="100px"
-      fixed
-      permanent
-      clipped
-    >
+    <v-navigation-drawer app v-model="drawer" clipped left>
       <v-list class="text-h6">
         <v-list-item-group>
-          <v-row justify="center" align="center" style="height: 60px;">
-            <v-icon @click.stop="shrink = !shrink">mdi-chevron-left</v-icon>
+          <v-row justify="center">
+            <h3 class="my-6">{{ details['first_name'] }}</h3>
           </v-row>
-          <v-list-item>
-            <v-col>
-              <v-avatar class="grey"></v-avatar>
-            </v-col>
-            <v-col>
-              <h3>user</h3>
-            </v-col>
-          </v-list-item>
           <v-divider />
           <v-list-item>
             <v-col>
@@ -56,7 +45,7 @@
           <v-list-item>
             <v-col>
               <v-list-item-icon>
-                <v-icon x-large color="green">
+                <v-icon x-large color="purple">
                   mdi-alpha-r-circle-outline
                 </v-icon>
               </v-list-item-icon>
@@ -81,6 +70,14 @@
           </v-list-item>
           <v-list-item>
             <v-col>
+              <v-icon color="green" x-large>mdi-account</v-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>Profile</v-list-item-title>
+            </v-col>
+          </v-list-item>
+          <v-list-item>
+            <v-col>
               <v-icon x-large color="black">
                 mdi-logout
               </v-icon>
@@ -98,25 +95,58 @@
 </template>
 
 <script>
+import axios from 'axios'
+import cookies from 'vue-cookies'
 export default {
-  //   mounted() {
-  //     this.screen_size()
-  //     window.addEventListener('resize', this.screen_size)
-  //   },
+  mounted() {
+    this.get_profile()
+    this.get_only_image()
+  },
 
-  //   methods: {
-  //     screen_size() {
-  //       if (document.documentElement.clientWidth < 1400) {
-  //         this.mini = true
-  //       } else if (document.documentElement.clientWidth >= 1400) {
-  //         this.mini = false
-  //       }
-  //     },
-  //   },
+  methods: {
+    get_only_image() {
+      axios
+        .request({
+          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_image`,
+          responseType: 'blob',
+          headers:{
+            token: cookies.get('token')
+          }
+        })
+        .then((response) => {
+          this.image = URL.createObjectURL(response['data'])
+          
+        })
+        .catch((error) => {
+          this.message_two = error['response']['data']
+        })
+    },
+
+    get_profile() {
+      axios
+        .request({
+          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
+          params: {
+            client_id: cookies.get('client_id'),
+          },
+        })
+        .then((response) => {
+          this.details = response['data']
+        })
+        .catch((error) => {
+          this.message = error['response']['data']
+        })
+    },
+  },
+
   data() {
     return {
       shrink: true,
-      drawer: true,
+      drawer: false,
+      details: undefined,
+      message: undefined,
+      message_two: undefined,
+      image: undefined
     }
   },
 }
