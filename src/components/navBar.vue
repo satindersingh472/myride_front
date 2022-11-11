@@ -18,19 +18,19 @@
       </v-navigation-drawer>
     </div>
     <div v-if="mobile_view === false">
-        <v-toolbar class="yellow darken-3 " >
-        <v-row class="mx-6 text-h5" align="center">
-          <h3 class="font-weight-bold">MyRide</h3>
-          <v-text class="mx-5">Rides</v-text>
-          <v-col cols="2">
-            <v-text-field v-model="text"></v-text-field>
+      <v-toolbar class="yellow darken-3">
+        <v-row class="mx-6 text-h5"  align="center" justify="center">
+          <v-col md="6" sm="6" >
+            <v-text justify-self="end" class="font-weight-bold">MyRide</v-text>
           </v-col>
-          <v-icon color="primary" large @click="text = 'yes'">
-            mdi-magnify
-          </v-icon>
+          <v-col>
+
+          </v-col>
+        
         </v-row>
-        </v-toolbar>
+      </v-toolbar>
     </div>
+
   </div>
 </template>
 
