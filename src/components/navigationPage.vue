@@ -1,10 +1,19 @@
 <template>
   <div>
+    <v-app-bar app  clipped-left>
+        <v-app-title class="text-h4 font-weight-bold yellow--text text--darken-3" >MyRide</v-app-title>
+    </v-app-bar>
+
+
+
     <v-navigation-drawer
+    app
       v-model="drawer"
       :mini-variant.sync="shrink"
       mini-variant-width="100px"
-      absolute
+      fixed
+      permanent
+      clipped
     >
       <v-list class="text-h6">
         <v-list-item-group>
@@ -65,12 +74,12 @@
               </v-icon>
             </v-col>
             <v-col>
-              <v-list-item-title class="ml-6">
+              <v-list-item-title>
                 Booked Rides
               </v-list-item-title>
             </v-col>
           </v-list-item>
-          <v-list-item class="my-4" justify="start">
+          <v-list-item>
             <v-col>
               <v-icon x-large color="black">
                 mdi-logout
