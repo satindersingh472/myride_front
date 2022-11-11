@@ -7,56 +7,80 @@
       absolute
     >
       <v-list class="text-h6">
-        <v-list-item-group >
-            <v-row justify="center" align="center" style="height:60px;">
-                     <v-icon @click.stop="shrink = !shrink">mdi-chevron-left</v-icon>
-            </v-row>
-            <v-row justify="center" class="my-4" >
+        <v-list-item-group>
+          <v-row justify="center" align="center" style="height: 60px;">
+            <v-icon @click.stop="shrink = !shrink">mdi-chevron-left</v-icon>
+          </v-row>
+          <v-list-item>
+            <v-col>
               <v-avatar class="grey"></v-avatar>
-            </v-row>
-          <v-list-item style="text-align:center;" >
-            <v-list-item-title class="text-h6">User</v-list-item-title>
+            </v-col>
+            <v-col>
+              <h3>user</h3>
+            </v-col>
           </v-list-item>
           <v-divider />
           <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="blue" x-large>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-col>
+              <v-list-item-icon>
+                <v-icon color="blue" x-large>mdi-home</v-icon>
+              </v-list-item-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-col>
           </v-list-item>
 
           <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="blue darken-3" x-large>mdi-car-search</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              Find Rides
-            </v-list-item-title>
+            <v-col>
+              <v-list-item-icon>
+                <v-icon color="blue darken-3" x-large>mdi-car-search</v-icon>
+              </v-list-item-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>
+                Find Rides
+              </v-list-item-title>
+            </v-col>
           </v-list-item>
           <v-divider />
           <v-list-item>
-            <v-list-item-icon>
-              <v-icon x-large color="green">mdi-alpha-r-circle-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>
-              Posted Rides
-            </v-list-item-title>
+            <v-col>
+              <v-list-item-icon>
+                <v-icon x-large color="green">
+                  mdi-alpha-r-circle-outline
+                </v-icon>
+              </v-list-item-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>
+                Posted Rides
+              </v-list-item-title>
+            </v-col>
           </v-list-item>
           <v-list-item>
-            <v-icon x-large color="yellow darken-3">
-              mdi-alpha-b-circle-outline
-            </v-icon>
-            <v-list-item-title class="ml-6" >
-              Booked Rides
-            </v-list-item-title>
+            <v-col>
+              <v-icon x-large color="yellow darken-3">
+                mdi-alpha-b-circle-outline
+              </v-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title class="ml-6">
+                Booked Rides
+              </v-list-item-title>
+            </v-col>
           </v-list-item>
-          <v-list-item>
-            <v-icon x-large color="black">
-              mdi-logout
-            </v-icon>
-            <v-list-item-title class="ml-6" >
-              Logout
-            </v-list-item-title>
+          <v-list-item class="my-4" justify="start">
+            <v-col>
+              <v-icon x-large color="black">
+                mdi-logout
+              </v-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>
+                Logout
+              </v-list-item-title>
+            </v-col>
           </v-list-item>
         </v-list-item-group>
       </v-list>
