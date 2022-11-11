@@ -5,7 +5,7 @@
       <v-container>
         <v-row justify="center" >
           <v-col
-             cols="7"
+             sm="12" md="10" lg="8" 
             v-for="(detail, index) in details"
             :key="index"
           >

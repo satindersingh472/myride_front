@@ -51,7 +51,12 @@ const routes = [
   },
   {
     path: '/rough_page',
-    component: RoughPage
+    component: RoughPage,
+    meta:[
+      {
+        title: 'Rough Page'
+      }
+    ]
   }
   
 ]
