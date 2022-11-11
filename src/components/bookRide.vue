@@ -66,6 +66,9 @@ export default {
         .then((response) => {
           this.message =  `Your booking Id is: ${response['data']['booking_id']}`
           this.disabled = true
+          setTimeout(() => {
+            this.message = undefined
+          }, 10000);
         })
         // on error the message will be displayed and it will disapper at 1500 milliseconds
         .catch((error) => {
