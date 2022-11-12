@@ -1,6 +1,11 @@
 <template>
-    <div>
+    <div app >
+        <v-container>
+            
 
+
+
+        </v-container>
     </div>
 </template>
 

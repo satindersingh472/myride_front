@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from "@/views/homePage.vue"
 import DiscoverRides from "@/views/discoverRides.vue"
+import PostRide from "@/views/postRide.vue"
 import RoughPage from "@/views/roughPage.vue"
 
 Vue.use(VueRouter)
@@ -46,6 +47,28 @@ const routes = [
       {
         name: 'keywords',
         content: 'myride,easy,affordable'
+      }
+    ]
+  },
+  {
+    path: '/post_ride',
+    component: PostRide,
+    meta: [
+      {
+        title: 'New Ride'
+      },
+      {
+        name: 'author',
+        content: 'Satinder Singh'
+      },
+      {
+
+        name: 'description',
+        content: 'Post new ride to make money and help people'
+      },
+      {
+        name: 'keyword',
+        content: 'my rides, find_rides_easily,helping_people'
       }
     ]
   },
