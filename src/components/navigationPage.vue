@@ -49,7 +49,7 @@
             </v-col>
             <v-col>
               <v-list-item-title>
-                Post A Ride
+                <router-link class="black--text text-decoration-none" to='/post_ride'>Post Ride</router-link>
               </v-list-item-title>
             </v-col>
           </v-list-item>
