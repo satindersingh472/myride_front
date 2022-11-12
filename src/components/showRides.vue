@@ -2,6 +2,7 @@
   <div app>
     <!-- this components make a request to an api and give back the rides and store the response into details -->
     <div v-if="message !== undefined" >
+      <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
      <v-row justify="center" align="end" class="mt-4"  >
       <h1 class="red--text">{{message}}</h1>
      </v-row>
@@ -45,22 +46,25 @@ export default {
   components: {
     BookRide,
   },
-  // on mounted it will execute get rides function
+  // on mounted it will execute get rides function and also listen to the global events
   mounted() {
     this.get_rides()
-
+    // it will help show the rides if there is any related to the search
     this.$root.$on('search_response',this.change_details)
+    // it will help show the error message if no rides matches the result
     this.$root.$on('search_response_error',this.change_message)
   },
-  // this method will execute the request to an api and get back the response
+
   methods: {
+    // will change details upom listening to global event
     change_details(new_details){
       this.details = new_details
     },
+    // will show message listening to global event
     change_message(new_message){
       this.message = new_message
     },
-
+// will make a request to an api
     get_rides() {
       axios
         .request({

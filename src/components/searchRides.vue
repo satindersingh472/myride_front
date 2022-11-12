@@ -50,7 +50,7 @@ export default {
         .then((response) => {
           this.$root.$emit('search_response',response['data'])
         })
-        // on error show the message
+        // on error emit the event to show the error message
         .catch((error) => {
           this.$root.$emit('search_response_error',error['response']['data'])
         })
