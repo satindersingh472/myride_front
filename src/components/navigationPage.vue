@@ -11,7 +11,7 @@
       <v-spacer />
       <v-list-item-avatar size="50" class="mr-6">
         <v-img :src="image"></v-img>
-        <p v-if="message_two !== undefined" >{{message_two}}</p>
+        <p v-if="message_two !== undefined">{{ message_two }}</p>
       </v-list-item-avatar>
     </v-app-bar>
     <!-- this is the side notification for the page in which various navigations are attached -->
@@ -32,23 +32,28 @@
               </v-list-item-icon>
             </v-col>
             <v-col>
-              <v-list-item-title>Home</v-list-item-title>
-            </v-col>
-          </v-list-item>
-
-          <v-list-item>
-            <v-col>
-              <v-list-item-icon>
-                <v-icon color="blue darken-3" x-large>mdi-car-search</v-icon>
-              </v-list-item-icon>
-            </v-col>
-            <v-col>
               <v-list-item-title>
-                <router-link class="text-decoration-none black--text"  to = "/discover_rides">Find Rides</router-link>
+                <router-link
+                  class="text-decoration-none black--text"
+                  to="/discover_rides"
+                >
+                  Home
+                </router-link>
               </v-list-item-title>
             </v-col>
           </v-list-item>
           <v-divider />
+          <v-list-item>
+            <v-col>
+              <v-icon color="brown" x-large>mdi-note-plus</v-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>
+                Post A Ride
+              </v-list-item-title>
+            </v-col>
+          </v-list-item>
+
           <v-list-item>
             <v-col>
               <v-list-item-icon>
