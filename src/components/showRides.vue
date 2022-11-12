@@ -1,5 +1,9 @@
 <template>
   <div app>
+    <!-- this components make a request to an api and give back the rides and store the response into details -->
+    <div v-if="message !== undefined" >
+      {{message}}
+    </div>
     <v-container>
       <v-row justify="center">
         <v-col cols="10" v-for="(detail, index) in details" :key="index">
@@ -38,25 +42,36 @@ export default {
   components: {
     BookRide,
   },
+  // on mounted it will execute get rides function
   mounted() {
     this.get_rides()
+
+    this.$root.$on('search_response',this.change_details)
   },
+  // this method will execute the request to an api and get back the response
   methods: {
+    change_details(new_details){
+      this.details = new_details
+    },
+
+
     get_rides() {
       axios
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/rides`,
         })
+        // on success catch the response
         .then((response) => {
           this.details = response['data']
         })
         .catch((error) => {
-          error
+          this.message = error['response']['data']
         })
     },
   },
   data() {
     return {
+      message: undefined,
       details: undefined,
       image_srcs: [],
     }
