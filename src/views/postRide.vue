@@ -1,6 +1,8 @@
 <template>
   <div app>
     <!-- this componetn will post a ride for the rider and other users can see the rides posted -->
+    <!-- it is just getting the information from the input fields and sending it all as props to the 
+    dialog box component so that user can confirm before sending -->
     <navigation-page></navigation-page>
     <v-container>
       <v-row justify="center">
@@ -10,11 +12,12 @@
       </v-row>
       <v-row justify="center">
         <v-form>
+            <!-- below is the form with fields to fill -->
           <v-container>
             <v-row>
               <v-col cols="12">
                 <v-text-field
-                    v-model="city_one"
+                  v-model="city_one"
                   label="From City"
                   outlined
                   hint="For example, Edmonton, Calgary."
@@ -29,7 +32,7 @@
               </v-col>
               <v-col cols="12">
                 <v-text-field
-                v-model="city_two"
+                  v-model="city_two"
                   label="To City"
                   outlined
                   hint="For example, Edmonton, Calgary"
@@ -76,16 +79,19 @@
                 </v-dialog>
               </v-col>
               <v-col cols="12">
-                <h3>Leaving the City at: </h3>
+                <h3>Leaving the City at:</h3>
                 <v-card width="350px" class="pa-2">
-                  <v-toolbar class="my-2 primary white--text ">
-                    <h3   
-                    v-if="
-                      an_hour !== undefined &&
-                      a_minute !== undefined &&
-                      am_pm !== undefined
-                    " >{{ an_hour }}:{{a_minute}} {{am_pm}}</h3>
-                    <h3  v-else>No time selected</h3>
+                  <v-toolbar class="my-2 primary white--text">
+                    <h3
+                      v-if="
+                        an_hour !== undefined &&
+                        a_minute !== undefined &&
+                        am_pm !== undefined
+                      "
+                    >
+                      {{ an_hour }}:{{ a_minute }} {{ am_pm }}
+                    </h3>
+                    <h3 v-else>No time selected</h3>
                   </v-toolbar>
                   <v-row>
                     <v-col>
@@ -116,14 +122,19 @@
                 </v-card>
               </v-col>
             </v-row>
+            <!-- this below coomponent is used to generate the dialog box and accepting props which cab be used to send api request -->
             <v-row justify="center" class="my-8">
-              <v-btn class="success rounded-lg" x-large>
-                Post Ride
-              </v-btn>
+              <ride-post
+                :city_one="city_one"
+                :prov_one="prov_one"
+                :city_two="city_two"
+                :prov_two="prov_two"
+                :travel_date="date"
+                :leave_time="`${this.an_hour}:${this.a_minute} ${this.am_pm}`"
+              ></ride-post>
             </v-row>
           </v-container>
         </v-form>
-      
       </v-row>
     </v-container>
   </div>
@@ -131,12 +142,11 @@
 
 <script>
 import NavigationPage from '@/components/navigationPage.vue'
+import RidePost from '@/dialogs/ridePost.vue'
 export default {
   components: {
     NavigationPage,
-  },
-
-  mounted() {
+    RidePost,
   },
 
   data() {
@@ -160,6 +170,8 @@ export default {
         .toISOString()
         .substr(0, 10),
       modal: false,
+      city_one: undefined,
+      city_two: undefined,
       prov_one: undefined,
       prov_two: undefined,
       dialog: false,
@@ -181,7 +193,7 @@ export default {
       meridians: ['AM', 'PM'],
       an_hour: undefined,
       a_minute: undefined,
-      am_pm: undefined
+      am_pm: undefined,
     }
   },
 }
