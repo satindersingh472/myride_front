@@ -44,7 +44,7 @@
             </v-col>
             <v-col>
               <v-list-item-title>
-                Find Rides
+                <router-link class="text-decoration-none black--text"  to = "/discover_rides">Find Rides</router-link>
               </v-list-item-title>
             </v-col>
           </v-list-item>
