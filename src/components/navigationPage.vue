@@ -25,49 +25,55 @@
             </h3>
           </v-row>
           <v-divider />
-          <v-list-item>
-            <v-col>
-              <v-list-item-icon>
-                <v-icon color="blue" x-large>mdi-home</v-icon>
-              </v-list-item-icon>
-            </v-col>
-            <v-col>
-              <v-list-item-title>
-                <router-link
-                  class="text-decoration-none black--text"
-                  to="/discover_rides"
-                >
-                  Home
-                </router-link>
-              </v-list-item-title>
-            </v-col>
-          </v-list-item>
-          <v-divider />
-          <v-list-item>
-            <v-col>
-              <v-icon color="brown" x-large>mdi-note-plus</v-icon>
-            </v-col>
-            <v-col>
-              <v-list-item-title>
-                <router-link class="black--text text-decoration-none" to='/post_ride'>Post Ride</router-link>
-              </v-list-item-title>
-            </v-col>
-          </v-list-item>
 
-          <v-list-item>
-            <v-col>
-              <v-list-item-icon>
-                <v-icon x-large color="purple">
-                  mdi-alpha-r-circle-outline
-                </v-icon>
-              </v-list-item-icon>
-            </v-col>
-            <v-col>
-              <v-list-item-title>
-                Posted Rides
-              </v-list-item-title>
-            </v-col>
-          </v-list-item>
+          <router-link
+            class="text-decoration-none black--text"
+            to="/discover_rides"
+          >
+            <v-list-item>
+              <v-col>
+                <v-list-item-icon>
+                  <v-icon color="blue" x-large>mdi-home</v-icon>
+                </v-list-item-icon>
+              </v-col>
+              <v-col>
+                <v-list-item-title>
+                  Home
+                </v-list-item-title>
+              </v-col>
+            </v-list-item>
+          </router-link>
+
+          <v-divider />
+          <router-link class="black--text text-decoration-none" to="/post_ride">
+            <v-list-item>
+              <v-col>
+                <v-icon color="brown" x-large>mdi-note-plus</v-icon>
+              </v-col>
+              <v-col>
+                <v-list-item-title>
+                  Post Ride
+                </v-list-item-title>
+              </v-col>
+            </v-list-item>
+          </router-link>
+          <router-link to="/posted_rides">
+            <v-list-item>
+              <v-col>
+                <v-list-item-icon>
+                  <v-icon x-large color="purple">
+                    mdi-alpha-r-circle-outline
+                  </v-icon>
+                </v-list-item-icon>
+              </v-col>
+              <v-col>
+                <v-list-item-title>
+                  Posted Rides
+                </v-list-item-title>
+              </v-col>
+            </v-list-item>
+          </router-link>
+
           <v-list-item>
             <v-col>
               <v-icon x-large color="yellow darken-3">
