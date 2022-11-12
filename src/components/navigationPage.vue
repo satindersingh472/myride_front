@@ -6,7 +6,7 @@
         MyRide
       </v-app-title>
       <v-spacer />
-      <v-list-item-avatar size="55" class="mr-6 ">
+      <v-list-item-avatar size="50" class="mr-6 ">
     <v-img :src="image"></v-img>
       </v-list-item-avatar>
     </v-app-bar>
@@ -15,7 +15,7 @@
       <v-list class="text-h6">
         <v-list-item-group>
           <v-row justify="center">
-            <h3 class="my-6">{{ details['first_name'] }}</h3>
+            <h3 class="my-6">{{ details['first_name']}} {{details['last_name']}}</h3>
           </v-row>
           <v-divider />
           <v-list-item>
