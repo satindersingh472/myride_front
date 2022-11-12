@@ -2,9 +2,12 @@
   <div app>
     <!-- this components make a request to an api and give back the rides and store the response into details -->
     <div v-if="message !== undefined" >
-      {{message}}
+     <v-row justify="center" align="end" class="mt-4"  >
+      <h1 class="red--text">{{message}}</h1>
+     </v-row>
+     
     </div>
-    <v-container>
+    <v-container v-if="message === undefined"  >
       <v-row justify="center">
         <v-col cols="10" v-for="(detail, index) in details" :key="index">
           <v-card elevation="8" class="rounded-xl grey lighten-3">
@@ -47,13 +50,16 @@ export default {
     this.get_rides()
 
     this.$root.$on('search_response',this.change_details)
+    this.$root.$on('search_response_error',this.change_message)
   },
   // this method will execute the request to an api and get back the response
   methods: {
     change_details(new_details){
       this.details = new_details
     },
-
+    change_message(new_message){
+      this.message = new_message
+    },
 
     get_rides() {
       axios

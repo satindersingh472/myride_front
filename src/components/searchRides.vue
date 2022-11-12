@@ -6,6 +6,7 @@
         Where do you want to go?
       </p>
       <div>
+        <p>for all rides from particular city just enter name in the <strong>From</strong> field and search</p>
         <v-text-field
           v-model="city_one"
           style="width: 300px;"
@@ -13,6 +14,7 @@
           outlined
           label="From"
         ></v-text-field>
+        <p>for all rides to a particular city just enter the city in <strong>To</strong> field and press search</p>
         <v-text-field
           v-model="city_two"
           class="rounded-xl"
@@ -50,10 +52,7 @@ export default {
         })
         // on error show the message
         .catch((error) => {
-          this.message = error['response']['data']
-          setTimeout(() => {
-            this.message = undefined
-          }, 1500);
+          this.$root.$emit('search_response_error',error['response']['data'])
         })
     },
   },
