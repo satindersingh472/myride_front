@@ -57,7 +57,7 @@
               </v-col>
             </v-list-item>
           </router-link>
-          <router-link to="/posted_rides">
+          <router-link  class="black--text text-decoration-none" to="/posted_rides">
             <v-list-item>
               <v-col>
                 <v-list-item-icon>

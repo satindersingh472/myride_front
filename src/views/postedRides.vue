@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <!-- this components is calling an api and emitting the response as a global event -->
+    <navigation-page></navigation-page>
+    <show-rides></show-rides>
+  </div>
+</template>
+
+<script>
+import ShowRides from "@/components/showRides.vue"
+import NavigationPage from '@/components/navigationPage.vue'
+import axios from 'axios'
+import cookies from 'vue-cookies'
+export default {
+  components: {
+    NavigationPage,
+    ShowRides
+  },
+
+// will call the api and emit the response globally
+  mounted() {
+    axios
+      .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`, 
+      headers:{
+        token: cookies.get('token'),
+        client_id: cookies.get('client_id')
+      }
+      })
+      .then((response) => {
+        this.$root.$emit('search_response',response['data'])
+      })
+      .catch((error) => {
+        this.$root.$emit('search_response_error',error['response']['data'])
+      })
+  },
+}
+</script>
+
+<style lang="scss" scoped></style>
