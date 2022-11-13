@@ -13,7 +13,7 @@
           </v-flex>
           <v-flex xs10 md6 lg4 text-center>
             <v-card width="400" class="mx-auto pa-3 rounded-lg" elevation="9">
-              <div class="yellow darken-3 rounded-lg" style="height: 50px;">
+              <div class="yellow darken-3 rounded-lg text-center" style="height: 50px;">
                 <v-text class="text-h4 font-weight-bold">Login</v-text>
               </div>
               <v-text-field
@@ -36,13 +36,25 @@
                 @click:append="show = !show"
               ></v-text-field>
               <!-- this button will send an api request -->
-              <v-btn  @click="send_request" class="my-4" large color="success" dark >
+              <v-btn
+                @click="send_request"
+                class="my-4"
+                large
+                color="success"
+                dark
+              >
                 Login
               </v-btn>
-              <p  class="font-weight-bold" v-if="message === undefined">Please enter the valid email and password</p>
-              <p  class="font-weight-bold" v-if="message !== undefined">{{message}}</p>
-              <hr />
-              <v-btn class="primary my-4">Create an account</v-btn>
+              <p class="font-weight-bold" v-if="message === undefined">
+                Please enter the valid email and password
+              </p>
+              <p class="font-weight-bold" v-if="message !== undefined">
+                {{ message }}
+              </p>
+              <v-divider></v-divider>
+              <router-link to="/client_signup" >
+                <v-btn class="primary my-4">Create an account</v-btn>
+              </router-link>
             </v-card>
           </v-flex>
         </v-layout>
@@ -57,8 +69,8 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
-  mounted () {
-    if(cookies.get('client_id')){
+  mounted() {
+    if (cookies.get('client_id')) {
       this.$router.push('/discover_rides')
     }
   },
@@ -66,31 +78,29 @@ export default {
     // will make the api request
     send_request() {
       axios
-      // api enpoint
-        .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_login`,
-        method: 'POST',
-        data:{
-          // will grab the email and password model
-          email: this.email,
-          password: this.password
-        }
-        
+        // api enpoint
+        .request({
+          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_login`,
+          method: 'POST',
+          data: {
+            // will grab the email and password model
+            email: this.email,
+            password: this.password,
+          },
         })
         // on response we will set the cookies of client_id and token
         .then((response) => {
-          cookies.set('client_id',response['data']['client_id'])
-          cookies.set('token',response['data']['token'])
+          cookies.set('client_id', response['data']['client_id'])
+          cookies.set('token', response['data']['token'])
           this.$router.push('/discover_rides')
-          
         })
-      // on error show the message
+        // on error show the message
         .catch((error) => {
           this.message = error['response']['data']
-          this.email = undefined,
-          this.password = undefined
+          ;(this.email = undefined), (this.password = undefined)
           setTimeout(() => {
             this.message = undefined
-          }, 1500);
+          }, 1500)
         })
     },
   },
@@ -101,7 +111,7 @@ export default {
       show: false,
       email: undefined,
       password: undefined,
-      message: undefined
+      message: undefined,
     }
   },
 }

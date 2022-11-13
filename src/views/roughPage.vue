@@ -1,7 +1,10 @@
 <template>
   <div>
-    <!-- <nav-bar></nav-bar> -->
-    hellllo
+  <v-container>
+    <v-row>
+      <v-card></v-card>
+    </v-row>
+  </v-container>
   </div>
 </template>
 

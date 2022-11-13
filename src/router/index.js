@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from "@/views/homePage.vue"
+import ClientSignup from '@/views/clientSignup.vue'
 import DiscoverRides from "@/views/discoverRides.vue"
 import PostRide from "@/views/postRide.vue"
 import PostedRides from "@/views/postedRides.vue"
@@ -91,6 +92,19 @@ const routes = [
       {
         name: 'keywords',
         content: 'rides,upcoming rides,edit rides,delete rides'
+      }
+    ]
+  },
+  {
+    path: '/client_signup',
+    component: ClientSignup,
+    meta:[
+      {
+        title: 'MyRide Signup'
+      },
+      {
+        name: 'author',
+        content: 'Satinder Singh'
       }
     ]
   },
