@@ -20,8 +20,10 @@
         <v-card>
           <v-toolbar class="yellow darken-3">Press Confirm to delete</v-toolbar>
           <v-card-text>
-            <p v-if="message === undefined">The ride {{ride_id}} will be deleted.Do you want to continue?</p>
-            <p v-else>{{message}}</p>
+            <h3 v-if="message === undefined">
+              The ride {{ ride_id }} will be deleted.Do you want to continue?
+            </h3>
+            <h3 v-else>{{ message }}</h3>
           </v-card-text>
 
           <v-card-actions>
@@ -45,26 +47,30 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
-props:{
-ride_id: Number
-},
+  props: {
+    ride_id: Number,
+  },
 
   methods: {
     delete_ride() {
       axios
-        .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`,
-        method: 'DELETE',
-        headers:{
-            token: cookies.get('token')
-        },
-        data:{
-            ride_id: this.ride_id
-        }
-        
-        
+        .request({
+          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`,
+          method: 'DELETE',
+          headers: {
+            token: cookies.get('token'),
+          },
+          data: {
+            ride_id: this.ride_id,
+          },
         })
         .then((response) => {
           this.message = response['data']
+          this.disabled = true
+          setTimeout(() => {
+            this.dialog = false
+            this.$emit('delete_ride_response', this.ride_id)
+          }, 3000)
         })
         .catch((error) => {
           this.message = error['response']['data']
@@ -75,7 +81,7 @@ ride_id: Number
     return {
       dialog: false,
       disabled: false,
-      message: undefined
+      message: undefined,
     }
   },
 }
