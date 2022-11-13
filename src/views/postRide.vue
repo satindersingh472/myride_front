@@ -150,10 +150,13 @@ export default {
     RidePost,
   },
 
+// will expect an event will reset the form on this page
+// this response is coming after success reponse of post ride
 mounted () {
   this.$root.$on('success_response',this.reset)
 },
 
+// just reset the form and individually reset the time because it is not the part of a form it is just a string
   methods: {
     reset() {
       this.$refs['form'].reset()
