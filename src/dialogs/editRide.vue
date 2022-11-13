@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- this component will edit the ride by sending a patch request -->
     <v-row justify="end">
+        <!-- dialog will appear upon editing -->
       <v-dialog
         transition="dialog-bottom-transition"
         v-model="dialog"
@@ -13,10 +15,10 @@
         </template>
         <v-card>
           <v-toolbar class="yellow darken-3">
-            just change fields which are not correct Please save after making
+            Change fields which are not correct Please save after making
             changes. Original values are displayed inside brackets
           </v-toolbar>
-          <v-card-text class="mt-5" style="display: grid; gap: 15px;">
+          <v-card-text  v-if="message === undefined" class="mt-5" style="display: grid; gap: 15px;">
             <div>
               <label class="text-h6" for="from_city">
                 From City:({{ detail['from_city'] }})
@@ -95,7 +97,7 @@
             </div>
             <div>
               <label class="text-h6" for="date">
-                Current Travel date: {{ detail['travel_date'] }}
+                Current Travel date: ({{ detail['travel_date'] }})
               </label>
             </div>
             <div>
@@ -103,7 +105,7 @@
               <input class="text-h6" type="date" v-model="new_travel_date" />
             </div>
             <div>
-                <label class="text-h6" for="leave_time">Current Leave Time: {{detail['leave_time']}}</label>
+                <label class="text-h6" for="leave_time">Current Leave Time: ({{detail['leave_time']}})</label>
             </div>
             <div>
                 <label class="text-h6" for="new_leave_time">New Leave Time: </label>
@@ -152,10 +154,11 @@
               </v-col>
             </div>
           </v-card-text>
+          <v-card-text class="text-h6" v-if="message !== undefined">{{message}}</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="red text-white" @click="dialog = false">Cancel</v-btn>
-            <v-btn class="success" @click="ride_patch">Save</v-btn>
+            <v-btn class="red text-white" @click="dialog = false;clear_all">Go Back</v-btn>
+            <v-btn class="success" :disabled="disabled" @click="ride_patch">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -173,12 +176,18 @@ export default {
 
   data() {
     return {
+        message: undefined,
       dialog: false,
+      disabled: false,
       new_from_prov: undefined,
       new_from_city: undefined,
       new_to_city: undefined,
       new_to_prov: undefined,
       new_travel_date: undefined,
+      an_hour: undefined,
+      a_minute: undefined,
+      am_pm: undefined,
+      new_leave_time: undefined,
       
 
        hours: [
@@ -196,15 +205,16 @@ export default {
         '12',
       ],
       minutes: ['00', '15', '30', '45'],
-      meridians: ['AM', 'PM'],
-      an_hour: undefined,
-      a_minute: undefined,
-      am_pm: undefined,
-      new_leave_time: undefined
+      meridians: ['AM', 'PM']
+      
     }
   },
 
   methods: {
+    clear_all(){
+        this.new_from_prov = ''
+    },
+
 
     ride_patch() {
         if(this.an_hour !== undefined && this.a_minute !== undefined && this.am_pm !== undefined){
@@ -232,10 +242,16 @@ export default {
           },
         })
         .then((response) => {
-          response
+          this.$emit('edit_response',response['data'])
+          this.disabled = true
+          setTimeout(() => {
+            this.dialog = false
+            this.disabled = false
+            this.message = undefined
+          }, 2000);
         })
         .catch((error) => {
-          error
+          this.message = error['response']['data']
         })
     },
   },

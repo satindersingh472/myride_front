@@ -38,7 +38,7 @@
               <h3>Ride ID: {{ detail['ride_id'] }}</h3>
             </div>
             <div>
-              <edit-ride :detail="detail" ></edit-ride>
+              <edit-ride  @edit_response="replace_details(index,$event)" :detail="detail" ></edit-ride>
               <!-- sending a prop for deleting and expecting an event and it will delete the ride
                 after a successfull response from the ridedelete component -->
 
@@ -83,6 +83,9 @@ export default {
     index_splice(index) {
       this.details.splice(index, 1)
     },
+    replace_details(index,detail){
+        this.details.splice(index,1,detail)
+    }
   
 
 
