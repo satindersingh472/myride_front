@@ -67,10 +67,11 @@ export default {
         .then((response) => {
           this.message = response['data']
           this.disabled = true
+            this.$emit('delete_ride_response', this.ride_id)
           setTimeout(() => {
             this.dialog = false
-            this.$emit('delete_ride_response', this.ride_id)
-          }, 3000)
+         
+          }, 1500)
         })
         .catch((error) => {
           this.message = error['response']['data']
