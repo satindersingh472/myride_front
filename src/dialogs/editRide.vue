@@ -102,6 +102,7 @@
               </select>
             </div>
             <div>
+                <!-- will show the old travel date and let us enter the new date with the help of datepicker -->
               <label class="text-h6" for="date">
                 Current Travel date: ({{ detail['travel_date'] }})
               </label>
@@ -148,6 +149,7 @@
       </v-dialog>
             </div>
             <div>
+                <!-- will show the old time and also let us enter the new time -->
                 <label class="text-h6" for="leave_time">Current Leave Time: ({{detail['leave_time']}})</label>
             </div>
             <div>
@@ -219,6 +221,7 @@ export default {
 
   data() {
     return {
+        // basic functionality variables
         message: undefined,
       dialog: false,
       disabled: false,
@@ -231,11 +234,13 @@ export default {
       an_hour: undefined,
       a_minute: undefined,
       am_pm: undefined,
+    //   new_leave_time will be hh:mm am/pm if all of those are not undefined
       new_leave_time: undefined,
+    //   date for datepicker
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         modal: false,
       
-
+    // values for time card
        hours: [
         '01',
         '02',
@@ -257,6 +262,7 @@ export default {
   },
 
   methods: {
+    // will help us to reset the form after success or failure of an api
     clear_all(){
         this.new_from_prov = undefined
         this.new_from_city = undefined
@@ -276,6 +282,7 @@ export default {
         } else {
             this.new_leave_time = null
         }
+        // api request
       axios
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`,
