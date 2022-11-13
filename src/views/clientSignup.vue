@@ -1,6 +1,8 @@
 <template>
   <div>
     <v-app>
+      <!-- this component will gather all the input fields and register the user in a database and send the email to the user's
+      valid email account upon any duplicate email registration the user will be able to get a error message -->
       <v-container class="grey lighten-3" fluid fill-height>
         <v-row justify="center">
           <v-col cols="12" lg="4" align-self="center">
@@ -84,6 +86,7 @@ import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
   methods: {
+    // api request registering a user and sending an email upon success
     send_request() {
       axios
         .request({
@@ -97,11 +100,13 @@ export default {
           }
         })
         .then((response) => {
+          // message will be sent to the page and cookies will be set upon success
             this.message = 'Please check your email to confirm your account'
           cookies.set('token',response['data']['token'])
           cookies.set('client_id',response['data']['client_id'])
         })
         .catch((error) => {
+          // message will be sent upon failure 
           this.message = error['response']['data']
           setTimeout(() => {
             this.message = undefined 
@@ -112,9 +117,11 @@ export default {
 
   data() {
     return {
+      // basic function variables
         message: undefined,
       rules: [(value) => !!value || 'Required.'],
       show: false,
+      // api request data v-model variables
       first_name: undefined,
       last_name: undefined,
       email: undefined,
