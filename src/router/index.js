@@ -94,6 +94,27 @@ const routes = [
       }
     ]
   },
+  // {
+  //   path: '/edit_ride',
+  //   component: EditRide,
+  //   meta:[
+  //     {
+  //       title: 'Edit Ride'
+  //     },
+  //     {
+  //       name: 'author',
+  //       content: 'Satinder Singh'
+  //     },
+  //     {
+  //       name: 'description',
+  //       content: 'easy to edit rides if something goes wrong'
+  //     },
+  //     {
+  //       name: 'keywords',
+  //       content: 'edit,mistake,correction'
+  //     }
+  //   ]
+  // },
   {
     path: '/rough_page',
     component: RoughPage,

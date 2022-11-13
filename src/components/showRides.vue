@@ -29,6 +29,9 @@
             <div class="mx-4">
               <h3>Departure Time: {{ detail['leave_time'] }}</h3>
             </div>
+            <div class="mx-4" >
+                <h3>Ride ID: {{detail['ride_id']}}</h3>
+            </div>
             <div class="d-flex justify-end mx-6">
               <book-ride :detail="detail"></book-ride>
             </div>
