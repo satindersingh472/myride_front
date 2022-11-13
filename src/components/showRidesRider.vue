@@ -8,7 +8,7 @@
       </v-row>
     </div>
     <v-container v-if="message === undefined">
-      <v-row justify="center">
+      <v-row justify="start">
         <v-col
           cols="10"
           lg="5"

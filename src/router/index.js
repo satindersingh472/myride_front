@@ -5,6 +5,7 @@ import ClientSignup from '@/views/clientSignup.vue'
 import DiscoverRides from "@/views/discoverRides.vue"
 import PostRide from "@/views/postRide.vue"
 import PostedRides from "@/views/postedRides.vue"
+import ClientVerified from '@/views/clientVerified.vue'
 import RoughPage from "@/views/roughPage.vue"
 
 Vue.use(VueRouter)
@@ -108,27 +109,28 @@ const routes = [
       }
     ]
   },
-  // {
-  //   path: '/edit_ride',
-  //   component: EditRide,
-  //   meta:[
-  //     {
-  //       title: 'Edit Ride'
-  //     },
-  //     {
-  //       name: 'author',
-  //       content: 'Satinder Singh'
-  //     },
-  //     {
-  //       name: 'description',
-  //       content: 'easy to edit rides if something goes wrong'
-  //     },
-  //     {
-  //       name: 'keywords',
-  //       content: 'edit,mistake,correction'
-  //     }
-  //   ]
-  // },
+  {
+    path: '/client_verified',
+    component: ClientVerified,
+    meta: [
+      {
+        title: 'Client Verification',
+      },
+      {
+        name: 'author',
+        content: 'Satinder Singh'
+      },
+      {
+        name: 'description',
+        content: 'Client verification notification page'
+      },
+      {
+        name: 'keywords',
+        content: 'client_verification, easy'
+      }
+    ]
+  },
+
   {
     path: '/rough_page',
     component: RoughPage,

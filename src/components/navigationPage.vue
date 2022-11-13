@@ -57,7 +57,10 @@
               </v-col>
             </v-list-item>
           </router-link>
-          <router-link  class="black--text text-decoration-none" to="/posted_rides">
+          <router-link
+            class="black--text text-decoration-none"
+            to="/posted_rides"
+          >
             <v-list-item>
               <v-col>
                 <v-list-item-icon>
@@ -95,16 +98,11 @@
             </v-col>
           </v-list-item>
           <v-list-item>
-            <v-col>
-              <v-icon x-large color="black">
-                mdi-logout
-              </v-icon>
-            </v-col>
-            <v-col>
-              <v-list-item-title>
-                Logout
-              </v-list-item-title>
-            </v-col>
+            <v-row class="text-center" > 
+              <v-col >
+                <client-logout></client-logout>
+              </v-col>
+            </v-row>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -115,7 +113,11 @@
 <script>
 import axios from 'axios'
 import cookies from 'vue-cookies'
+import ClientLogout from '@/dialogs/clientLogout.vue'
 export default {
+  components: {
+    ClientLogout,
+  },
   // on mount it will execute the two functions to send the request and get the information about the profile
   mounted() {
     this.get_profile()

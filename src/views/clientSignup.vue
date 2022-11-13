@@ -65,6 +65,7 @@
               >
                 Register
               </v-btn>
+              <!-- will show this message permanently otherwise message is undefined -->
               <p v-if="message === undefined">Please confirm your email <br> account once register</p>
               <p class="mx-5" v-if="message !== undefined" >{{message}}</p>
               <v-divider class="my-4"></v-divider>
