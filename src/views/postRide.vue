@@ -14,8 +14,9 @@
         <v-form>
             <!-- below is the form with fields to fill -->
           <v-container>
-            <v-row>
-              <v-col cols="12">
+            <form ref="form" >
+            <v-row justify="center" >
+              <v-col  lg="6" md="7" sm="10" cols="12">
                 <v-text-field
                   v-model="city_one"
                   label="From City"
@@ -30,7 +31,7 @@
                   hint="For example, AB,BC,SK,MB"
                 ></v-select>
               </v-col>
-              <v-col cols="12">
+              <v-col  lg="6" md="7" sm="10" cols="12">
                 <v-text-field
                   v-model="city_two"
                   label="To City"
@@ -45,7 +46,7 @@
                   hint="For example, AB,BC,SK,MB"
                 ></v-select>
               </v-col>
-              <v-col cols="12">
+              <v-col  lg="6" md="7" sm="10" cols="12">
                 <v-dialog
                   ref="dialog"
                   v-model="modal"
@@ -78,9 +79,8 @@
                   </v-date-picker>
                 </v-dialog>
               </v-col>
-              <v-col cols="12">
-                <h3>Leaving the City at:</h3>
-                <v-card width="350px" class="pa-2">
+              <v-col  lg="6" md="7" sm="10" cols="12" >
+                <v-card width="300px" class="pa-2" >
                   <v-toolbar class="my-2 primary white--text">
                     <h3
                       v-if="
@@ -122,6 +122,7 @@
                 </v-card>
               </v-col>
             </v-row>
+            </form>
             <!-- this below coomponent is used to generate the dialog box and accepting props which cab be used to send api request -->
             <v-row justify="center" class="my-8">
               <ride-post
@@ -149,6 +150,19 @@ export default {
     RidePost,
   },
 
+mounted () {
+  this.$root.$on('success_response',this.reset)
+},
+
+  methods: {
+    reset() {
+      this.$refs['form'].reset()
+      this.an_hour = undefined
+      this.a_minute = undefined
+      this.am_pm = undefined
+    }
+  },
+
   data() {
     return {
       items: [
@@ -170,11 +184,15 @@ export default {
         .toISOString()
         .substr(0, 10),
       modal: false,
+      dialog: false,
       city_one: undefined,
       city_two: undefined,
       prov_one: undefined,
       prov_two: undefined,
-      dialog: false,
+      an_hour: undefined,
+      a_minute: undefined,
+      am_pm: undefined,
+    
       hours: [
         '01',
         '02',
@@ -191,10 +209,7 @@ export default {
       ],
       minutes: ['00', '15', '30', '45'],
       meridians: ['AM', 'PM'],
-      an_hour: undefined,
-      a_minute: undefined,
-      am_pm: undefined,
-    }
+    }  
   },
 }
 </script>

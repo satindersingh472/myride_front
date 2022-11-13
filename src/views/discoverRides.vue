@@ -10,6 +10,9 @@
           <search-rides></search-rides>
         </v-col>
         <v-col>
+          <v-row justify="center" >
+            <h1 class="my-5 purple--text text-h3"  >Upcoming Rides</h1>
+          </v-row>
           <show-rides></show-rides>
         </v-col>
       </v-col>
@@ -18,7 +21,6 @@
 </template>
 
 <script>
-
 import NavigationPage from '@/components/navigationPage.vue'
 import SearchRides from '@/components/searchRides.vue'
 import ShowRides from '@/components/showRides.vue'
@@ -26,9 +28,8 @@ export default {
   components: {
     NavigationPage,
     SearchRides,
-    ShowRides
+    ShowRides,
   },
-
 }
 </script>
 

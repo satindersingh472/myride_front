@@ -2,11 +2,16 @@
   <div>
     <!-- this component will search the rides through api and emit the results as search_response and send the details along -->
     <v-sheet style="display: grid; place-items: center;" min-height="300">
-      <p class="text-h3 font-weight-bold purple--text text--darken-3">
+      <p class="text-h3 text-center purple--text ">
         Where do you want to go?
       </p>
+      <p>Just enter one or both fields and press search</p>
       <div>
-        <p>for all rides from particular city just enter name in the <strong>From</strong> field and search</p>
+        <v-row justify="center" >
+          <v-col  cols="10"
+          lg="5"
+          md="6">
+        <!-- <p>for all rides from particular city just enter name in the <strong>From</strong> field and search</p> -->
         <v-text-field
           v-model="city_one"
           style="width: 300px;"
@@ -14,7 +19,11 @@
           outlined
           label="From"
         ></v-text-field>
-        <p>for all rides to a particular city just enter the city in <strong>To</strong> field and press search</p>
+        </v-col>
+          <v-col  cols="10"
+          lg="5"
+          md="6">
+        <!-- <p>for all rides to a particular city just enter the city in <strong>To</strong> field and press search</p> -->
         <v-text-field
           v-model="city_two"
           class="rounded-xl"
@@ -22,6 +31,8 @@
           label="To"
           style="width: 300px;"
         ></v-text-field>
+        </v-col>
+        </v-row>
       </div>
       <div>
         <!-- this button will send the request to an api -->

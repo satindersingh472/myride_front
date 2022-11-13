@@ -10,7 +10,9 @@
     </div>
     <v-container v-if="message === undefined"  >
       <v-row justify="center">
-        <v-col cols="7" v-for="(detail, index) in details" :key="index">
+        <v-col  cols="10"
+          lg="5"
+          md="6" v-for="(detail, index) in details" :key="index">
           <v-card elevation="8" class="rounded-xl grey lighten-3">
             <v-card-title>
               <p class="text-sm-h4 font-weight-bold">
