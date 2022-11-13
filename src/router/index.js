@@ -6,6 +6,7 @@ import DiscoverRides from "@/views/discoverRides.vue"
 import PostRide from "@/views/postRide.vue"
 import PostedRides from "@/views/postedRides.vue"
 import ClientVerified from '@/views/clientVerified.vue'
+import PassengerBookings from '@/views/passengerBookings.vue'
 import RoughPage from "@/views/roughPage.vue"
 
 Vue.use(VueRouter)
@@ -127,6 +128,27 @@ const routes = [
       {
         name: 'keywords',
         content: 'client_verification, easy'
+      }
+    ]
+  },
+  {
+    path: '/passenger_bookings',
+    component: PassengerBookings,
+    meta: [
+      {
+        title: 'Passenger Bookings'
+      },
+      {
+        name: 'author',
+        content: 'Satinder Singh'
+      },
+      {
+        name: 'description',
+        content: 'See all the rides booked as a passenger'
+      },
+      {
+        name: 'keywords',
+        content: 'rides,upcoming rides,all the details'
       }
     ]
   },
