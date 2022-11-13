@@ -1,6 +1,6 @@
 <template>
   <div app>
-    <!-- this components make a request to an api and give back the rides and store the response into details -->
+    <!-- this component is for the rider who wants to see the rides posted and delete or edit them -->
     <div v-if="message !== undefined" >
       <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
      <v-row justify="center" align="end" class="mt-4"  >
@@ -29,9 +29,10 @@
             <div class="mx-4">
               <h3>Departure Time: {{ detail['leave_time'] }}</h3>
             </div>
-            <div class="d-flex justify-end mx-6">
-              <book-ride :detail="detail"></book-ride>
+            <div>
+                <ride-delete :ride_id="detail['ride_id']" ></ride-delete>
             </div>
+
           </v-card>
         </v-col>
       </v-row>
@@ -40,15 +41,13 @@
 </template>
 
 <script>
-import BookRide from '@/dialogs/bookRide.vue'
-import axios from 'axios'
+import RideDelete from "@/dialogs/rideDelete.vue"
 export default {
-  components: {
-    BookRide,
-  },
-  // on mounted it will execute get rides function and also listen to the global events
+    components: {
+        RideDelete,
+    },
+
   mounted() {
-    this.get_rides()
     // it will help show the rides if there is any related to the search
     this.$root.$on('search_response',this.change_details)
     // it will help show the error message if no rides matches the result
@@ -64,26 +63,12 @@ export default {
     change_message(new_message){
       this.message = new_message
     },
-// will make a request to an api
-    get_rides() {
-      axios
-        .request({
-          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/rides`,
-        })
-        // on success catch the response
-        .then((response) => {
-          this.details = response['data']
-        })
-        .catch((error) => {
-          this.message = error['response']['data']
-        })
-    },
+
   },
   data() {
     return {
       message: undefined,
       details: undefined,
-      image_srcs: [],
     }
   },
 }

@@ -2,19 +2,19 @@
   <div>
     <!-- this components is calling an api and emitting the response as a global event -->
     <navigation-page></navigation-page>
-    <show-rides></show-rides>
+    <show-rides-rider></show-rides-rider>
   </div>
 </template>
 
 <script>
-import ShowRides from "@/components/showRides.vue"
+import ShowRidesRider from "@/components/showRidesRider.vue"
 import NavigationPage from '@/components/navigationPage.vue'
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
   components: {
     NavigationPage,
-    ShowRides
+    ShowRidesRider
   },
 
 // will call the api and emit the response globally
