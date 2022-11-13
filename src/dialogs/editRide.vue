@@ -18,8 +18,11 @@
             Change fields which are not correct Please save after making
             changes. Original values are displayed inside brackets
           </v-toolbar>
+          <!-- it will create all the details about the ride -->
           <v-card-text  v-if="message === undefined" class="mt-5" style="display: grid; gap: 15px;">
             <div>
+                <!-- old from city and new from city 
+                will show the old city with in label and new city in input field -->
               <label class="text-h6" for="from_city">
                 From City:({{ detail['from_city'] }})
               </label>
@@ -32,13 +35,14 @@
               />
             </div>
             <div>
+                <!-- show the old from province and let us choose new from prov -->
               <label for="from_prov" class="text-h6">
                 From Province:({{ detail['from_prov'] }})
               </label>
               <select
                 class="pa-1"
                 name="from_prov"
-                style="border: 2px solid black;"
+                style="border: 1px solid grey;"
                 v-model="new_from_prov"
                 ref="from_prov"
               >
@@ -58,6 +62,7 @@
               </select>
             </div>
             <div>
+                <!-- show old to city and let us choose new to city -->
               <label class="text-h6" for="to_city">
                 To City:({{ detail['to_city'] }})
               </label>
@@ -70,13 +75,14 @@
               />
             </div>
             <div>
-              <label for="from_prov" class="text-h6">
+                <!-- show the old to prov and let us choose new to prov -->
+              <label for="to_prov" class="text-h6">
                 To Province:({{ detail['to_prov'] }})
               </label>
               <select
                 class="pa-1"
                 name="from_prov"
-                style="border: 2px solid black;"
+                style="border: 1px solid grey;"
                 v-model="new_to_prov"
                 ref="from_prov"
               >
@@ -102,7 +108,44 @@
             </div>
             <div>
               <label class="text-h6" for="new_date">New Travel Date:  </label>
-              <input class="text-h6" type="date" v-model="new_travel_date" />
+            <v-dialog
+        ref="dialog"
+        v-model="modal"
+        :return-value.sync="date"
+        persistent
+        width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Choose New Date"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="modal = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.dialog.save(date)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-dialog>
             </div>
             <div>
                 <label class="text-h6" for="leave_time">Current Leave Time: ({{detail['leave_time']}})</label>
@@ -179,6 +222,7 @@ export default {
         message: undefined,
       dialog: false,
       disabled: false,
+    //   details getting from form inputs with v-model
       new_from_prov: undefined,
       new_from_city: undefined,
       new_to_city: undefined,
@@ -188,6 +232,8 @@ export default {
       a_minute: undefined,
       am_pm: undefined,
       new_leave_time: undefined,
+        date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+        modal: false,
       
 
        hours: [
@@ -212,11 +258,19 @@ export default {
 
   methods: {
     clear_all(){
-        this.new_from_prov = ''
+        this.new_from_prov = undefined
+        this.new_from_city = undefined
+        this.new_to_prov = undefined
+        this.new_to_city = undefined
+        this.new_leave_time = undefined
+        this.new_travel_date = undefined
     },
 
 
     ride_patch() {
+        // this conditional check is for db because db was not accepting undefined:undefined undefined from leave time
+        // because those values were `${this.an_hour}:${this.a_minute} ${this.am_pm}` so if these are undefined 
+        // then it will send null to the python and the python will consider it none and wont change it
         if(this.an_hour !== undefined && this.a_minute !== undefined && this.am_pm !== undefined){
             this.new_leave_time = `${this.an_hour}:${this.a_minute} ${this.am_pm}`
         } else {
@@ -235,23 +289,34 @@ export default {
             from_prov: this.new_from_prov,
             to_city: this.new_to_city,
             to_prov: this.new_to_prov,
-            travel_date: this.new_travel_date,
+            travel_date: this.date,
             leave_time: this.new_leave_time
             
 
           },
         })
         .then((response) => {
+            // upon response emit the local event to change the values at the page
           this.$emit('edit_response',response['data'])
+        //   this will disable the button
           this.disabled = true
+          this.clear_all()
           setTimeout(() => {
+            // on 2 seconds will change these values
             this.dialog = false
             this.disabled = false
             this.message = undefined
-          }, 2000);
+          }, 1000);
         })
+        // upon errors message will be shown
         .catch((error) => {
+            this.disabled = true
           this.message = error['response']['data']
+          this.clear_all()
+          setTimeout(() => {
+            this.message = undefined
+            this.disabled = false
+          }, 3000);
         })
     },
   },
