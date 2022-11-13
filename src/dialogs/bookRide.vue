@@ -69,7 +69,7 @@ export default {
           setTimeout(() => {
             this.message = undefined
             this.disabled = false
-          }, 10000);
+          }, 3000);
         })
         // on error the message will be displayed and it will disapper at 1500 milliseconds
         .catch((error) => {
