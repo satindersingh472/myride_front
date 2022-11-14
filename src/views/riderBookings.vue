@@ -2,17 +2,7 @@
   <div>
     <navigation-page></navigation-page>
     <v-row class="my-5" justify="center">
-      <v-card class="grey lighten-3 pa-5">
-        <v-row>
-          <v-col >
-            <h3>Ride ID:{{details[0]['ride_id']}}</h3>
-            <h3>From: {{details[0]['from_city']}}</h3>
-          </v-col>
-        </v-row>
-      </v-card>
-      <!-- <h1 class="my-5 purple--text text-h4">
-        Bookings for Ride ID: {{ details[0]['ride_id'] }}
-      </h1> -->
+      <h2 class="purple--text" >Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</h2>
     </v-row>
     <v-container>
       <v-row justify="center">
@@ -30,20 +20,22 @@
                 <h4 class="text-h5 my-2">
                   Booking ID: {{ detail['booking_id'] }}
                 </h4>
-                <p class="text-h4">
+                <h3>
+                  Passenger:
                   {{ detail['passenger_first_name'] }}
                   {{ detail['passenger_last_name'] }}
-                </p>
-                <h3>Contact Passenger: {{ detail['phone_number'] }}</h3>
-                <h3>Email Passenger: {{ detail['email'] }}</h3>
+                </h3>
+                <h3>Contact: {{ detail['phone_number'] }}</h3>
+                <h3>Email: {{ detail['email'] }}</h3>
               </v-col>
               <v-col cols="12" lg="4">
-                <v-row class="mr-2 my-3" justify="end">
-                  <!-- this component will confirm the ride by sending an api reqyest and it will act like a button -->
-                  <confirm-booking  v-if="detail['is_confirmed'] == 0"></confirm-booking>
-                  <!-- <v-btn v-if="detail['is_confirmed'] == 0" class="warning">
-                    Confirm Booking
-                  </v-btn> -->
+                <patch-booking-rider :detail="detail" ></patch-booking-rider>
+                <!-- <v-row class="mr-2 my-3" justify="end">
+             
+                  <v-btn
+                    v-if="detail['is_confirmed'] == 0" :detail_booking_id="detail['booking_id']"
+                  ></v-btn>
+             
                   <v-btn v-if="detail['is_confirmed'] == 1" class="success">
                     Booking Confirmed
                   </v-btn>
@@ -77,7 +69,7 @@
                   >
                     Booking Completed
                   </v-btn>
-                </v-row>
+                </v-row> -->
               </v-col>
             </v-row>
           </v-card>
@@ -91,9 +83,9 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 import NavigationPage from '@/components/navigationPage.vue'
-import ConfirmBooking from '@/components/confirmBooking.vue'
+import PatchBookingRider from '@/components/patchBookingRider.vue'
 export default {
-  components: { NavigationPage,ConfirmBooking },
+  components: { NavigationPage, PatchBookingRider },
   mounted() {
     this.get_ride_details()
   },
