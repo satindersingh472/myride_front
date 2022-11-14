@@ -303,7 +303,7 @@ export default {
           },
         })
         .then((response) => {
-            // upon response emit the local event to change the values at the page
+            // upon response emit the local event to change the values at the page and the response contains the updated data
           this.$emit('edit_response',response['data'])
         //   this will disable the button
           this.disabled = true

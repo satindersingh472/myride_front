@@ -71,12 +71,12 @@
               </v-col>
               <v-col>
                 <v-list-item-title>
-                  Posted Rides
+                  My Posted Rides
                 </v-list-item-title>
               </v-col>
             </v-list-item>
           </router-link>
-
+<router-link class="text-decoration-none" to="/passenger_bookings">
           <v-list-item>
             <v-col>
               <v-icon x-large color="yellow darken-3">
@@ -85,10 +85,11 @@
             </v-col>
             <v-col>
               <v-list-item-title>
-                Booked Rides
+                My Bookings
               </v-list-item-title>
             </v-col>
           </v-list-item>
+</router-link>
           <v-list-item>
             <v-col>
               <v-icon color="green" x-large>mdi-account</v-icon>
