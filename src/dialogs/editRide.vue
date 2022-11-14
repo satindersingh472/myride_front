@@ -317,7 +317,7 @@ export default {
         })
         // upon errors message will be shown
         .catch((error) => {
-            this.disabled = true
+          this.disabled = true
           this.message = error['response']['data']
           this.clear_all()
           setTimeout(() => {

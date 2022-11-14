@@ -70,7 +70,7 @@ export default {
             this.message = undefined
             this.disabled = false
             this.dialog = false
-          }, 3000);
+          }, 1500);
         })
         // on error the message will be displayed and it will disapper at 1500 milliseconds
         .catch((error) => {

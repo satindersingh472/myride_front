@@ -26,9 +26,6 @@
               <h2>Arrival: {{ detail['to_city'] }},{{ detail['to_prov'] }}</h2>
             </v-card-subtitle>
             <div class="mx-4">
-              <h2>Transporter: {{ detail['rider_first_name'] }} {{detail['rider_last_name']}}</h2>
-            </div>
-            <div class="mx-4">
               <h3>Departure Date: {{ detail['travel_date'] }}</h3>
             </div>
             <div class="mx-4">
