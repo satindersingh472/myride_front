@@ -1,6 +1,6 @@
 <template>
   <div app >
-    <!-- this components is calling an api and emitting the response as a global event -->
+    <!-- this components is calling an api and emitting the response as a global event and show rides rider is listening-->
     <navigation-page></navigation-page>
     <v-row justify="center"><h3 class="my-7 text-h3 purple--text">Your Posted Rides</h3></v-row>
     <show-rides-rider></show-rides-rider>

@@ -2,10 +2,11 @@
   <div>
     <navigation-page></navigation-page>
     <v-row class="my-5" justify="center">
-      <v-card class="grey lighten-3">
+      <v-card class="grey lighten-3 pa-5">
         <v-row>
-          <v-col cols="10" lg="6" >
-            <h3>Ride ID:</h3>
+          <v-col >
+            <h3>Ride ID:{{details[0]['ride_id']}}</h3>
+            <h3>From: {{details[0]['from_city']}}</h3>
           </v-col>
         </v-row>
       </v-card>
@@ -38,9 +39,11 @@
               </v-col>
               <v-col cols="12" lg="4">
                 <v-row class="mr-2 my-3" justify="end">
-                  <v-btn v-if="detail['is_confirmed'] == 0" class="warning">
+                  <!-- this component will confirm the ride by sending an api reqyest and it will act like a button -->
+                  <confirm-booking  v-if="detail['is_confirmed'] == 0"></confirm-booking>
+                  <!-- <v-btn v-if="detail['is_confirmed'] == 0" class="warning">
                     Confirm Booking
-                  </v-btn>
+                  </v-btn> -->
                   <v-btn v-if="detail['is_confirmed'] == 1" class="success">
                     Booking Confirmed
                   </v-btn>
@@ -88,8 +91,9 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 import NavigationPage from '@/components/navigationPage.vue'
+import ConfirmBooking from '@/components/confirmBooking.vue'
 export default {
-  components: { NavigationPage },
+  components: { NavigationPage,ConfirmBooking },
   mounted() {
     this.get_ride_details()
   },
