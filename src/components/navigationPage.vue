@@ -43,6 +43,14 @@
               </v-col>
             </v-list-item>
           </router-link>
+            <v-list-item>
+            <v-col>
+              <v-icon color="green" x-large>mdi-account</v-icon>
+            </v-col>
+            <v-col>
+              <v-list-item-title>Profile</v-list-item-title>
+            </v-col>
+          </v-list-item>
 
           <v-divider />
           <router-link class="black--text text-decoration-none" to="/post_ride">
@@ -84,20 +92,13 @@
               </v-icon>
             </v-col>
             <v-col>
-              <v-list-item-title>
-                My Bookings
+              <v-list-item-title class="ml-7">
+                My Booked Rides
               </v-list-item-title>
             </v-col>
           </v-list-item>
 </router-link>
-          <v-list-item>
-            <v-col>
-              <v-icon color="green" x-large>mdi-account</v-icon>
-            </v-col>
-            <v-col>
-              <v-list-item-title>Profile</v-list-item-title>
-            </v-col>
-          </v-list-item>
+        
           <v-list-item>
             <v-row class="text-center" > 
               <v-col >

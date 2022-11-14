@@ -7,6 +7,7 @@ import PostRide from "@/views/postRide.vue"
 import PostedRides from "@/views/postedRides.vue"
 import ClientVerified from '@/views/clientVerified.vue'
 import PassengerBookings from '@/views/passengerBookings.vue'
+import RiderBookings from '@/views/riderBookings.vue'
 import RoughPage from "@/views/roughPage.vue"
 
 Vue.use(VueRouter)
@@ -149,6 +150,27 @@ const routes = [
       {
         name: 'keywords',
         content: 'rides,upcoming rides,all the details'
+      }
+    ]
+  },
+  {
+    path: '/rider_bookings',
+    component: RiderBookings,
+    meta: [
+      {
+        title: 'Rider Bookings'
+      },
+      {
+        name: 'author',
+        content: 'Satinder Singh'
+      },
+      {
+        name :'description',
+        content: 'find bookings associated with rides'
+      },
+      {
+        name: 'keywords',
+        content: 'Myrides,bookings,passenger,connecting,riders'
       }
     ]
   },

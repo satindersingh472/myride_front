@@ -35,10 +35,16 @@
               <h3>Ride ID: {{ detail['ride_id'] }}</h3>
             </div>
             <div>
+              
+              <v-row justify="end">
+                <!-- btn for view bookings -->
+                <v-btn  class="success mr-6 mb-6" @click="view_bookings(detail,$event)">View Bookings</v-btn>
+              </v-row>
+              <!-- component for editing rides -->
               <edit-ride  @edit_response="replace_details(index,$event)" :detail="detail" ></edit-ride>
               <!-- sending a prop for deleting and expecting an event and it will delete the ride
                 after a successfull response from the ridedelete component -->
-
+                <!-- this component will delete the ride itself -->
               <ride-delete
                 @delete_ride_response="index_splice(index, $event)"
                 :ride_id="detail['ride_id']"
@@ -54,6 +60,7 @@
 <script>
 import RideDelete from '@/dialogs/rideDelete.vue'
 import EditRide from "@/dialogs/editRide.vue"
+import cookies from 'vue-cookies'
 export default {
   components: {
     RideDelete,
@@ -80,9 +87,15 @@ export default {
     index_splice(index) {
       this.details.splice(index, 1)
     },
+    // this will change the content on the page
     replace_details(index,detail){
         this.details.splice(index,1,detail)
-    }
+    },
+  // this will set the cookies ride id so that we can use to send an api request
+    view_bookings(detail){
+      cookies.set('ride_id',detail['ride_id'])
+      this.$router.push('/rider_bookings')
+    },
   
 
 
