@@ -27,6 +27,7 @@ export default {
         client_id: cookies.get('client_id')
       }
       })
+      // on success show rides rider will grab the global event and show the rides
       .then((response) => {
         this.$root.$emit('search_response',response['data'])
       })
