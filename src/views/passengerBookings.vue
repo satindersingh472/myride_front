@@ -9,7 +9,7 @@
       </v-row>
       <v-container>
         <!-- will show a just a message if error exists -->
-        <h3 v-if="message !== undefined">{{ message }}</h3>
+        <h2 style="text-align:center;" v-if="message !== undefined">{{ message }}</h2>
         <v-row v-if="message === undefined" justify="center">
           <v-col
             cols="10"
@@ -21,11 +21,11 @@
             <v-card class="rounded-xl grey lighten-3" elevation="5">
               <v-row class="my-3">
                 <v-col cols="12" lg="6" class="pa-6">
-                  <p class="text-sm-h4 font-weight-bold">
+                  <p class="text-h5 font-weight-bold">
                     From: {{ detail['from_city'] }},{{ detail['from_prov'] }}
                   </p>
                   <p
-                    class="text-sm-h4 grey--text text--darken-3 font-weight-bold"
+                    class="text-h5 grey--text text--darken-3 font-weight-bold"
                   >
                     To: {{ detail['to_city'] }},{{ detail['to_prov'] }}
                   </p>

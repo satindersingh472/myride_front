@@ -12,13 +12,16 @@
       </template>
       <v-card>
         <v-toolbar class="yellow darken-3">Cancel Booking</v-toolbar>
-        <v-card-text v-if="message === undefined" class="text-h5 my-5 text-center">
-        Booking : {{detail['booking_id']}} will be canceled. Do you want to continue?
+        <v-card-text v-if="message === undefined" class="text-h6 black--text my-5 text-center">
+        Booking ID : {{detail['booking_id']}} will be cancelled. Do you want to continue?
         </v-card-text>
         <v-card-text v-if="message !== undefined" class="text-h5 my-5 text-center">{{message}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="error">Go Back</v-btn>
+          <!-- when go back is click then dialog will disappear -->
+          <v-btn class="error" @click="dialog=false">Go Back</v-btn>
+          <!-- on click confirm api request will sent and on success various thing will happen like button disable emit the local event
+          and also show the response from api -->
           <v-btn class="success" :disabled="disabled" @click="cancel_booking">Confirm</v-btn>
         </v-card-actions>
       </v-card>
