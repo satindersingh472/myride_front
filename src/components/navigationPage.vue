@@ -158,6 +158,7 @@ export default {
         })
         .then((response) => {
           this.details = response['data']
+          
         })
         .catch((error) => {
           this.message = error['response']['data']
