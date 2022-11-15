@@ -1,10 +1,18 @@
 <template>
   <div>
-    <!-- <navigation-page></navigation-page> -->
-    <v-row class="my-5" justify="center">
+   
+    
+    <div v-if="message !== undefined">
+      <v-row justify="center" >
+        <p class="primary--text my-5 text-h4" >{{message}}</p>
+      </v-row>
+    </div>
+
+
+    <v-container v-if="message === undefined" >
+      <v-row class="my-5" justify="center">
       <p class="my-5 primary--text text-h4">Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</p>
     </v-row>
-    <v-container>
       <v-row justify="center">
         <v-col
           cols="10"
@@ -81,6 +89,7 @@ export default {
   data() {
     return {
       details: undefined,
+      message: undefined
     }
   },
 }

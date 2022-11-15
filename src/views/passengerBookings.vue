@@ -1,16 +1,18 @@
 <template>
   <div>
-  
+    
+      <!-- will show a just a message if error exists -->
+        <p style="text-align:center;" class="text-h4 primary--text my-5" v-if="message !== undefined">{{ message }}</p>
       <!-- this component will get the bookings made as a passenger and show them to the user 
       also if cancel booking is pressed then dialog box will appear-->
       <!-- <navigation-page></navigation-page> -->
+            <v-container v-if="message === undefined" >
+
       <v-row justify="center">
         <p  class="my-5 primary--text text-h4"  >My Booked Rides</p>
       </v-row>
-      <v-container>
-        <!-- will show a just a message if error exists -->
-        <h2 style="text-align:center;" v-if="message !== undefined">{{ message }}</h2>
-        <v-row v-if="message === undefined" justify="center">
+      
+        <v-row  justify="center">
           <v-col
             cols="10"
             lg="6"

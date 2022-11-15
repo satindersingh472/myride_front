@@ -2,11 +2,7 @@
   <div>
     <!-- this components is calling an api and emitting the response as a global event and show rides rider is listening-->
     <!-- <navigation-page></navigation-page> -->
-    <v-row justify="center">
-      <div>
-        <p class="my-5 primary--text text-h4">Your Posted Rides</p>
-      </div>
-    </v-row>
+
     <show-rides-rider></show-rides-rider>
   </div>
 </template>

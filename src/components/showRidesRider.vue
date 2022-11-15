@@ -3,11 +3,16 @@
     <!-- this component is for the rider who wants to see the rides posted and delete or edit them -->
     <div v-if="message !== undefined">
       <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
-      <v-row justify="center" align="end" class="mt-4">
-        <h2>{{ message }}</h2>
+      <v-row justify="center" align="end">
+        <p class="primary--text my-5 text-h4 " >{{ message }}</p>
       </v-row>
     </div>
     <v-container v-if="message === undefined">
+          <v-row justify="center">
+      <div>
+        <p class="my-5 primary--text text-h4">Your Posted Rides</p>
+      </div>
+    </v-row>
       <v-row justify="start">
         <v-col
           cols="10"

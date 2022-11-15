@@ -9,7 +9,7 @@
           <h2>{{ message }}</h2>
         </v-col>
         <v-col cols="12">
-          <v-btn @click="get_rides" class="primary">Show upcoming rides</v-btn>
+          <v-btn @click="get_rides"  :disabled="disabled" class="primary">Show upcoming rides</v-btn>
         </v-col>
         </v-card>
       </v-row>
@@ -100,7 +100,7 @@ export default {
     return {
       message: undefined,
       details: undefined,
-      image_srcs: [],
+      disabled: false
     }
   },
 }
