@@ -63,7 +63,6 @@
             class="success"
             :disabled="disabled"
             @click="patch_image"
-            
           >
             save
           </v-btn>
@@ -105,6 +104,7 @@ mounted () {
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_image`,
           method: 'PATCH',
+          responseType: 'blob',
           headers: {
             token: cookies.get('token'),
             'Content-Type': 'multipart/form-data',
@@ -116,11 +116,13 @@ mounted () {
         .then((response) => {
           this.disabled = true
           this.dialog = false
-            this.new_image = URL.createObjectURL(response['data'])
+          this.image_upload = undefined
+            this.image = URL.createObjectURL(response['data'])
         })
         .catch((error) => {
           this.message = error['response']['data']
           this.disabled= true
+          this.image_upload = undefined
           setTimeout(() => {
             this.message = undefined
             this.disabled=false
@@ -134,7 +136,6 @@ mounted () {
         dialog: false,
         disabled: true,
         image_upload: undefined,
-        new_image: undefined
     }
   },
 }
