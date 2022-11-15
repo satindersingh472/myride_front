@@ -105,6 +105,7 @@ export default {
             this.message = 'Please check your email to confirm your account'
           cookies.set('token',response['data']['token'])
           cookies.set('client_id',response['data']['client_id'])
+          this.$router.push('/')
         })
         .catch((error) => {
           // message will be sent upon failure 
