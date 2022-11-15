@@ -1,10 +1,10 @@
 <template>
-  <div app>
+  <div>
     <!-- this component is for the rider who wants to see the rides posted and delete or edit them -->
     <div v-if="message !== undefined">
       <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
       <v-row justify="center" align="end" class="mt-4">
-        <h1 class="red--text">{{ message }}</h1>
+        <h2>{{ message }}</h2>
       </v-row>
     </div>
     <v-container v-if="message === undefined">

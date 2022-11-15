@@ -7,7 +7,7 @@
     <v-container>
       <v-row justify="center">
         <div>
-          <p class="my-5 purple--text text-h3">Post a New Ride</p>
+          <p class="my-5 primary--text text-h4">Post a New Ride</p>
         </div>
       </v-row>
       <v-row justify="center">

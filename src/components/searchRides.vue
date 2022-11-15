@@ -2,7 +2,7 @@
   <div>
     <!-- this component will search the rides through api and emit the results as search_response and send the details along -->
     <v-sheet style="display: grid; place-items: center;" min-height="300">
-      <p class="text-h3 text-center purple--text ">
+      <p class="text-h4 text-center primary--text">
         Where do you want to go?
       </p>
       <p>Just enter one or both fields and press search</p>

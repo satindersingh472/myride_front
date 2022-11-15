@@ -2,40 +2,45 @@
   <div>
     <!-- this components is calling an api and emitting the response as a global event and show rides rider is listening-->
     <!-- <navigation-page></navigation-page> -->
-    <v-row justify="center"><p class="my-5 purple--text text-h3">Your Posted Rides</p></v-row>
+    <v-row justify="center">
+      <div>
+        <p class="my-5 primary--text text-h4">Your Posted Rides</p>
+      </div>
+    </v-row>
     <show-rides-rider></show-rides-rider>
   </div>
 </template>
 
 <script>
-import ShowRidesRider from "@/components/showRidesRider.vue"
+import ShowRidesRider from '@/components/showRidesRider.vue'
 // import NavigationPage from '@/components/navigationPage.vue'
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
   components: {
     // NavigationPage,
-    ShowRidesRider
+    ShowRidesRider,
   },
 
-// will call the api and emit the response globally
+  // will call the api and emit the response globally
   mounted() {
-   // emit the response so that components that needs this response will get false value
-    this.$root.$emit('cookies_presence',true)
+    // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence', true)
 
     axios
-      .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`, 
-      headers:{
-        token: cookies.get('token'),
-        client_id: cookies.get('client_id')
-      }
+      .request({
+        url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`,
+        headers: {
+          token: cookies.get('token'),
+          client_id: cookies.get('client_id'),
+        },
       })
       // on success show rides rider will grab the global event and show the rides
       .then((response) => {
-        this.$root.$emit('search_response',response['data'])
+        this.$root.$emit('search_response', response['data'])
       })
       .catch((error) => {
-        this.$root.$emit('search_response_error',error['response']['data'])
+        this.$root.$emit('search_response_error', error['response']['data'])
       })
   },
 }

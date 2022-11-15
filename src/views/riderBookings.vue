@@ -2,7 +2,7 @@
   <div>
     <!-- <navigation-page></navigation-page> -->
     <v-row class="my-5" justify="center">
-      <p class="my-5 purple--text text-h3">Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</p>
+      <p class="my-5 primary--text text-h4">Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</p>
     </v-row>
     <v-container>
       <v-row justify="center">
@@ -29,47 +29,10 @@
                 <h3>Email: {{ detail['email'] }}</h3>
               </v-col>
               <v-col cols="12" lg="4">
+                <!-- this component will patch the rides for rider for example
+                will show different button based on status on the booking
+                and also will expect prop so that it can work -->
                 <patch-booking-rider :detail="detail" ></patch-booking-rider>
-                <!-- <v-row class="mr-2 my-3" justify="end">
-             
-                  <v-btn
-                    v-if="detail['is_confirmed'] == 0" :detail_booking_id="detail['booking_id']"
-                  ></v-btn>
-             
-                  <v-btn v-if="detail['is_confirmed'] == 1" class="success">
-                    Booking Confirmed
-                  </v-btn>
-                </v-row>
-                <v-row justify="end" class="mr-2 my-3">
-                  <v-badge
-                    v-if="
-                      detail['is_confirmed'] == 0 && detail['is_completed'] == 0
-                    "
-                    color="error"
-                    icon="mdi-lock"
-                    overlap
-                  >
-                    <v-btn disabled>
-                      Complete Order
-                    </v-btn>
-                  </v-badge>
-                  <v-btn
-                    v-if="
-                      detail['is_confirmed'] == 1 && detail['is_completed'] == 0
-                    "
-                    class="warning"
-                  >
-                    Complete Booking
-                  </v-btn>
-                  <v-btn
-                    v-if="
-                      detail['is_confirmed'] == 1 && detail['is_completed'] == 1
-                    "
-                    class="success"
-                  >
-                    Booking Completed
-                  </v-btn>
-                </v-row> -->
               </v-col>
             </v-row>
           </v-card>

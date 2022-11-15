@@ -5,7 +5,7 @@
       also if cancel booking is pressed then dialog box will appear-->
       <!-- <navigation-page></navigation-page> -->
       <v-row justify="center">
-        <p  class="my-5 purple--text text-h3"  >My Booked Rides</p>
+        <p  class="my-5 primary--text text-h4"  >My Booked Rides</p>
       </v-row>
       <v-container>
         <!-- will show a just a message if error exists -->
