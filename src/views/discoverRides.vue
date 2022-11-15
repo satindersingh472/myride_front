@@ -11,7 +11,7 @@
         </v-col>
         <v-col>
           <v-row justify="center" >
-            <h1 class="my-5 grey--text text-h4"  >Upcoming Rides</h1>
+            <h1 class="my-5 grey--text text-h4" >Upcoming Rides</h1>
           </v-row>
           <show-rides></show-rides>
         </v-col>
