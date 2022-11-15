@@ -28,8 +28,10 @@ export default {
         url: `${process.env.VUE_APP_BASE_DOMAIN}/api/ride`,
         headers: {
           token: cookies.get('token'),
-          client_id: cookies.get('client_id'),
         },
+        params:{
+          client_id: cookies.get('client_id')
+        }
       })
       // on success show rides rider will grab the global event and show the rides
       .then((response) => {
