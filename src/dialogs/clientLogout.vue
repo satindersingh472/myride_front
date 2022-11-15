@@ -64,7 +64,7 @@ export default {
 
   data() {
     return {
-        disabled: false,
+        disabled: undefined,
         message: undefined,
       dialog: false,
     }
