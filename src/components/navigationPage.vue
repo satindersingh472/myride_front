@@ -51,6 +51,7 @@
                 </v-col>
               </v-list-item>
             </router-link>
+            <router-link class="text-decoration-none" to="/personal_profile" >
             <v-list-item>
               <v-col>
                 <v-icon color="green" x-large>mdi-account</v-icon>
@@ -59,7 +60,7 @@
                 <v-list-item-title>Profile</v-list-item-title>
               </v-col>
             </v-list-item>
-
+            </router-link>
             <v-divider />
             <router-link
               class="black--text text-decoration-none"

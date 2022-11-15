@@ -1,143 +1,186 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomePage from "@/views/homePage.vue"
-import ClientSignup from '@/views/clientSignup.vue'
-import DiscoverRides from "@/views/discoverRides.vue"
-import PostRide from "@/views/postRide.vue"
-import PostedRides from "@/views/postedRides.vue"
-import ClientVerified from '@/views/clientVerified.vue'
-import PassengerBookings from '@/views/passengerBookings.vue'
-import RiderBookings from '@/views/riderBookings.vue'
-import RoughPage from "@/views/roughPage.vue"
+import Vue from "vue";
+import VueRouter from "vue-router";
+import HomePage from "@/views/homePage.vue";
+import ClientSignup from "@/views/clientSignup.vue";
+import DiscoverRides from "@/views/discoverRides.vue";
+import PostRide from "@/views/postRide.vue";
+import PostedRides from "@/views/postedRides.vue";
+import ClientVerified from "@/views/clientVerified.vue";
+import PassengerBookings from "@/views/passengerBookings.vue";
+import RiderBookings from "@/views/riderBookings.vue";
+import PersonalProfile from "@/views/personalProfile.vue";
 
-Vue.use(VueRouter)
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: HomePage,
-    meta:[
+    meta: [
       {
-        title: "MyRide.ml"
+        title: "MyRide.ml",
       },
       {
         name: "author",
-        content: "Satinder Singh"
+        content: "Satinder Singh",
       },
       {
-        name: 'description',
-        content: 'My Ride is the one and only marketplace for rides,it is for the people who want to travel from city to city'
+        name: "description",
+        content:
+          "My Ride is the one and only marketplace for rides,it is for the people who want to travel from city to city",
       },
       {
-        name: 'keywords',
-        content: 'easy to find rides, people first,accessible,affordable'
-      }
-    ]
+        name: "keywords",
+        content: "easy to find rides, people first,accessible,affordable",
+      },
+    ],
   },
   {
-    path: '/discover_rides',
+    path: "/discover_rides",
     component: DiscoverRides,
-    meta:[
+    meta: [
       {
         title: "MyRides_rides",
       },
       {
         name: "author",
-        content: "Satinder Singh"
+        content: "Satinder Singh",
       },
       {
-        name: 'description',
-        content: 'latest rides from various cities and affordable rides'
+        name: "description",
+        content: "latest rides from various cities and affordable rides",
       },
       {
-        name: 'keywords',
-        content: 'myride,easy,affordable'
-      }
-    ]
+        name: "keywords",
+        content: "myride,easy,affordable",
+      },
+    ],
   },
   {
-    path: '/post_ride',
+    path: "/post_ride",
     component: PostRide,
     meta: [
       {
-        title: 'New Ride'
+        title: "New Ride",
       },
       {
-        name: 'author',
-        content: 'Satinder Singh'
+        name: "author",
+        content: "Satinder Singh",
       },
       {
-
-        name: 'description',
-        content: 'Post new ride to make money and help people'
+        name: "description",
+        content: "Post new ride to make money and help people",
       },
       {
-        name: 'keyword',
-        content: 'my rides, find_rides_easily,helping_people'
-      }
-    ]
+        name: "keyword",
+        content: "my rides, find_rides_easily,helping_people",
+      },
+    ],
   },
   {
-    path: '/posted_rides',
+    path: "/posted_rides",
     component: PostedRides,
     meta: [
       {
-        title: 'Posted Rides'
+        title: "Posted Rides",
       },
       {
-        name: 'author',
-        content: 'Satinder Singh'
+        name: "author",
+        content: "Satinder Singh",
       },
       {
-        name: 'description',
-        content: 'users can easily access all their rides posted'
+        name: "description",
+        content: "users can easily access all their rides posted",
       },
       {
-        name: 'keywords',
-        content: 'rides,upcoming rides,edit rides,delete rides'
-      }
-    ]
+        name: "keywords",
+        content: "rides,upcoming rides,edit rides,delete rides",
+      },
+    ],
   },
   {
-    path: '/client_signup',
+    path: "/client_signup",
     component: ClientSignup,
-    meta:[
+    meta: [
       {
-        title: 'MyRide Signup'
+        title: "MyRide Signup",
       },
       {
-        name: 'author',
-        content: 'Satinder Singh'
-      }
-    ]
+        name: "author",
+        content: "Satinder Singh",
+      },
+    ],
   },
   {
-    path: '/client_verified',
+    path: "/client_verified",
     component: ClientVerified,
     meta: [
       {
-        title: 'Client Verification',
+        title: "Client Verification",
       },
       {
-        name: 'author',
-        content: 'Satinder Singh'
+        name: "author",
+        content: "Satinder Singh",
       },
       {
-        name: 'description',
-        content: 'Client verification notification page'
+        name: "description",
+        content: "Client verification notification page",
       },
       {
-        name: 'keywords',
-        content: 'client_verification, easy'
-      }
-    ]
+        name: "keywords",
+        content: "client_verification, easy",
+      },
+    ],
   },
   {
-    path: '/passenger_bookings',
+    path: "/passenger_bookings",
     component: PassengerBookings,
     meta: [
       {
-        title: 'Passenger Bookings'
+        title: "Passenger Bookings",
+      },
+      {
+        name: "author",
+        content: "Satinder Singh",
+      },
+      {
+        name: "description",
+        content: "See all the rides booked as a passenger",
+      },
+      {
+        name: "keywords",
+        content: "rides,upcoming rides,all the details",
+      },
+    ],
+  },
+  {
+    path: "/rider_bookings",
+    component: RiderBookings,
+    meta: [
+      {
+        title: "Rider Bookings",
+      },
+      {
+        name: "author",
+        content: "Satinder Singh",
+      },
+      {
+        name: "description",
+        content: "find bookings associated with rides",
+      },
+      {
+        name: "keywords",
+        content: "Myrides,bookings,passenger,connecting,riders",
+      },
+    ],
+  },
+  {
+    path: '/personal_profile',
+    component: PersonalProfile,
+    meta:[
+      {
+        title: 'Personal Profile'
       },
       {
         name: 'author',
@@ -145,51 +188,19 @@ const routes = [
       },
       {
         name: 'description',
-        content: 'See all the rides booked as a passenger'
+        content: 'Clients can their personal profile and make changes to it'
       },
       {
         name: 'keywords',
-        content: 'rides,upcoming rides,all the details'
-      }
-    ]
-  },
-  {
-    path: '/rider_bookings',
-    component: RiderBookings,
-    meta: [
-      {
-        title: 'Rider Bookings'
-      },
-      {
-        name: 'author',
-        content: 'Satinder Singh'
-      },
-      {
-        name :'description',
-        content: 'find bookings associated with rides'
-      },
-      {
-        name: 'keywords',
-        content: 'Myrides,bookings,passenger,connecting,riders'
-      }
-    ]
-  },
-
-  {
-    path: '/rough_page',
-    component: RoughPage,
-    meta:[
-      {
-        title: 'Rough Page'
+        content: 'myride,clients,profile,make_changes'
       }
     ]
   }
-  
-]
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 /*remove the old meta tag */
 router.beforeEach((to, from, next) => {
   let current_meta_tags = document.querySelectorAll(`meta`);
@@ -199,7 +210,7 @@ router.beforeEach((to, from, next) => {
   /*put the title tag inside head */
   let new_meta_tags = to[`meta`];
   document.querySelector(`title`)[`innerText`] = new_meta_tags[0][`title`];
-/*put the other meta tags other than the title tag inside the head */
+  /*put the other meta tags other than the title tag inside the head */
   for (let i = 1; i < new_meta_tags.length; i++) {
     document
       .querySelector(`head`)
@@ -221,6 +232,4 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-
-
-export default router
+export default router;
