@@ -66,8 +66,12 @@
                 Register
               </v-btn>
               <!-- will show this message permanently otherwise message is undefined -->
-              <p v-if="message === undefined">Please confirm your email <br> account once register</p>
-              <p class="mx-5" v-if="message !== undefined" >{{message}}</p>
+              <p v-if="message === undefined">
+                Please confirm your email
+                <br />
+                account once register
+              </p>
+              <p class="mx-5" v-if="message !== undefined">{{ message }}</p>
               <v-divider class="my-4"></v-divider>
               <h3>Already have an account?</h3>
 
@@ -86,6 +90,10 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
+  mounted() {
+    // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence', false)
+  },
   methods: {
     // api request registering a user and sending an email upon success
     send_request() {
@@ -93,26 +101,26 @@ export default {
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
           method: 'POST',
-          data:{
+          data: {
             first_name: this.first_name,
             last_name: this.last_name,
             email: this.email,
-            password: this.password
-          }
+            password: this.password,
+          },
         })
         .then((response) => {
           // message will be sent to the page and cookies will be set upon success
-            this.message = 'Please check your email to confirm your account'
-          cookies.set('token',response['data']['token'])
-          cookies.set('client_id',response['data']['client_id'])
+          this.message = 'Please check your email to confirm your account'
+          cookies.set('token', response['data']['token'])
+          cookies.set('client_id', response['data']['client_id'])
           this.$router.push('/')
         })
         .catch((error) => {
-          // message will be sent upon failure 
+          // message will be sent upon failure
           this.message = error['response']['data']
           setTimeout(() => {
-            this.message = undefined 
-          }, 3000);
+            this.message = undefined
+          }, 3000)
         })
     },
   },
@@ -120,14 +128,14 @@ export default {
   data() {
     return {
       // basic function variables
-        message: undefined,
+      message: undefined,
       rules: [(value) => !!value || 'Required.'],
       show: false,
       // api request data v-model variables
       first_name: undefined,
       last_name: undefined,
       email: undefined,
-      password: undefined
+      password: undefined,
     }
   },
 }

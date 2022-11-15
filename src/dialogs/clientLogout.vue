@@ -49,6 +49,7 @@ export default {
           cookies.remove('token')
           cookies.remove('client_id')
           this.disabled = true
+          this.dialog = false
           this.$router.push('/')
         })
         // if error just show the message

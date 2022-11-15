@@ -3,9 +3,9 @@
   
       <!-- this component will get the bookings made as a passenger and show them to the user 
       also if cancel booking is pressed then dialog box will appear-->
-      <navigation-page></navigation-page>
-      <v-row justify="center" class="my-5">
-        <h1 class="purple--text text-h3">My Booked Rides</h1>
+      <!-- <navigation-page></navigation-page> -->
+      <v-row justify="center">
+        <p  class="my-5 purple--text text-h3"  >My Booked Rides</p>
       </v-row>
       <v-container>
         <!-- will show a just a message if error exists -->
@@ -116,17 +116,19 @@
 </template>
 
 <script>
-import NavigationPage from '@/components/navigationPage.vue'
+// import NavigationPage from '@/components/navigationPage.vue'
 import CancelBookingPassenger from '@/dialogs/cancelBookingPassenger.vue'
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
   components: {
-    NavigationPage,
+    // NavigationPage,
     CancelBookingPassenger,
   },
 
   mounted() {
+       // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence',true)
     this.get_bookings()
   },
   methods: {

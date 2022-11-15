@@ -25,8 +25,10 @@
 <script>
 
 export default {
-  components: {
-  
+
+  mounted () {
+    // emit the response so that components that needs this response will get false value 
+    this.$root.$emit('cookies_response',false);
   },
 }
 </script>

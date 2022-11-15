@@ -1,9 +1,9 @@
 <template>
-  <div app>
+  <div>
     <!-- this component is using navigation search and show rides component to show the rides and search option and navigation -->
     <v-row>
       <v-col cols="1">
-        <navigation-page></navigation-page>
+        <!-- <navigation-page></navigation-page> -->
       </v-col>
       <v-col>
         <v-col>
@@ -21,14 +21,18 @@
 </template>
 
 <script>
-import NavigationPage from '@/components/navigationPage.vue'
+// import NavigationPage from '@/components/navigationPage.vue'
 import SearchRides from '@/components/searchRides.vue'
 import ShowRides from '@/components/showRides.vue'
 export default {
   components: {
-    NavigationPage,
+    // NavigationPage,
     SearchRides,
     ShowRides,
+  },
+  mounted () {
+   // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence',true)
   },
 }
 </script>

@@ -1,10 +1,9 @@
 <template>
-  <div class="page">
+  <div>
     <!-- this component will help login the client if there is already an account -->
-    <v-app>
       <!-- container that contains logo and card -->
-      <v-container class="grey lighten-3" fill-height fluid>
-        <v-layout row wrap justify-center align-center>
+      <v-container class="grey lighten-3"  fluid>
+        <v-layout row wrap justify-center style="height:100vh;" align-center>
           <v-flex xs12 md6 lg4 text-start>
             <h1 class="font-weight-bold text-h1 yellow darken-3">
               MyRide.
@@ -61,7 +60,6 @@
       </v-container>
 
       <div class="text-center ma-2"></div>
-    </v-app>
   </div>
 </template>
 
@@ -73,6 +71,8 @@ export default {
     if (cookies.get('client_id')) {
       this.$router.push('/discover_rides')
     }
+
+    this.$root.$emit('cookies_presence',false)
   },
   methods: {
     // will make the api request

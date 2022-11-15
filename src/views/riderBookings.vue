@@ -1,8 +1,8 @@
 <template>
   <div>
-    <navigation-page></navigation-page>
+    <!-- <navigation-page></navigation-page> -->
     <v-row class="my-5" justify="center">
-      <h2 class="purple--text" >Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</h2>
+      <p class="my-5 purple--text text-h3">Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</p>
     </v-row>
     <v-container>
       <v-row justify="center">
@@ -82,12 +82,16 @@
 <script>
 import axios from 'axios'
 import cookies from 'vue-cookies'
-import NavigationPage from '@/components/navigationPage.vue'
+// import NavigationPage from '@/components/navigationPage.vue'
 import PatchBookingRider from '@/components/patchBookingRider.vue'
 export default {
-  components: { NavigationPage, PatchBookingRider },
+  components: { 
+     PatchBookingRider 
+     },
   mounted() {
     this.get_ride_details()
+       // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence',true)
   },
 
   methods: {
