@@ -78,6 +78,7 @@ export default {
   },
 
   methods: {
+    // api request for confirming the booking
     confirm_booking() {
       axios
         .request({
@@ -91,6 +92,7 @@ export default {
             is_confirmed: 'true'
           },
         })
+        // on success these values will be changed
         .then((response) => {
           if(response['data']['is_confirmed'] === 1){
             this.confirmed = true
@@ -99,10 +101,13 @@ export default {
             this.not_completed = true
           }
         })
+        // on failure a message will be sent
         .catch((error) => {
           this.message = error['response']['data']
         })
     },
+
+    // api request for complete booking 
      complete_booking() {
       axios
         .request({
@@ -116,6 +121,7 @@ export default {
             is_completed: 'true'
           },
         })
+        // on success these values will be changed
         .then((response) => {
           if(response['data']['is_completed'] === 1){
             this.completed = true
@@ -123,6 +129,7 @@ export default {
             this.confirmed_incomplete = false
           }
         })
+        // on failure a message will be sent
         .catch((error) => {
           this.message = error['response']['data']
         })
