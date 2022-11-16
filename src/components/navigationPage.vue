@@ -12,10 +12,6 @@
           MyRide
         </v-app-title>
         <v-spacer />
-        <!-- <v-list-item-avatar size="50" class="mr-6">
-        <v-img :src="image"></v-img>
-        <p v-if="message_two !== undefined">{{ message_two }}</p>
-      </v-list-item-avatar> -->
       </v-app-bar>
       <!-- this is the side notification for the page in which various navigations are attached -->
       <v-navigation-drawer
@@ -26,14 +22,6 @@
       >
         <v-list class="text-h6">
           <v-list-item-group>
-            <v-row justify="center">
-              <h3 v-if="message !== undefined">name not available</h3>
-              <h3 v-if="message === undefined" class="my-6">
-                {{ details['first_name'] }} {{ details['last_name'] }}
-              </h3>
-            </v-row>
-            <v-divider />
-
             <router-link
               class="text-decoration-none black--text"
               to="/discover_rides"
@@ -126,8 +114,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import cookies from 'vue-cookies'
+// import axios from 'axios'
+// import cookies from 'vue-cookies'
 import ClientLogout from '@/dialogs/clientLogout.vue'
 export default {
   components: {
@@ -148,31 +136,31 @@ export default {
       this.drawer = false
     },
 
-    get_profile() {
-      axios
-        .request({
-          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
-          params: {
-            client_id: cookies.get('client_id'),
-          },
-        })
-        .then((response) => {
-          this.details = response['data']
+    // get_profile() {
+    //   axios
+    //     .request({
+    //       url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
+    //       params: {
+    //         client_id: cookies.get('client_id'),
+    //       },
+    //     })
+    //     .then((response) => {
+    //       this.details = response['data']
           
-        })
-        .catch((error) => {
-          this.message = error['response']['data']
-        })
-    },
+    //     })
+    //     .catch((error) => {
+    //       this.message = error['response']['data']
+    //     })
+    // },
   },
 
   data() {
     return {
       shrink: true,
       drawer: false,
-      details: undefined,
-      message: undefined,
-      message_two: undefined,
+      // details: undefined,
+      // message: undefined,
+      // message_two: undefined,
       cookies_present: true,
     }
   },
