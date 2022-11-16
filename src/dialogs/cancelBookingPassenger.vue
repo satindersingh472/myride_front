@@ -19,10 +19,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- when go back is click then dialog will disappear -->
-          <v-btn class="error" @click="dialog=false">Go Back</v-btn>
+          <v-btn class="grey" @click="dialog=false">Go Back</v-btn>
           <!-- on click confirm api request will sent and on success various thing will happen like button disable emit the local event
           and also show the response from api -->
-          <v-btn class="success" :disabled="disabled" @click="cancel_booking">Confirm</v-btn>
+          <v-btn  :disabled="disabled" @click="cancel_booking">Confirm</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

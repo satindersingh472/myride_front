@@ -31,9 +31,9 @@
             <v-card-actions>
           <v-spacer></v-spacer>
           <!-- three different events are attached to this button -->
-          <v-btn @click="dialog = false; message = undefined; disabled = false" class="my-4 red">Go Back</v-btn>
+          <v-btn @click="dialog = false; message = undefined; disabled = false" class="my-4 grey">Go Back</v-btn>
           <!-- this button will send an api request and will be disabled on success response from api -->
-         <v-btn @click="send_request" :disabled ="disabled" v-model="disabled" class="my-4 success">Confirm</v-btn>
+         <v-btn @click="send_request" :disabled ="disabled" v-model="disabled" class="my-4">Confirm</v-btn>
         </v-card-actions>
         </v-card>
          </v-dialog>

@@ -202,8 +202,8 @@
           <v-card-text class="text-h6" v-if="message !== undefined">{{message}}</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="red text-white" @click="dialog = false;clear_all">Go Back</v-btn>
-            <v-btn class="success" :disabled="disabled" @click="ride_patch">Save</v-btn>
+            <v-btn class="grey" @click="dialog = false;clear_all()">Go Back</v-btn>
+            <v-btn  :disabled="disabled" @click="ride_patch">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

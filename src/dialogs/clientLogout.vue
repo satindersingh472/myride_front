@@ -17,12 +17,12 @@
       <!-- v card will be shown as a dialog box -->
       <v-card class="text-center">
         <v-toolbar class="yellow darken-3 text-h5">Logout</v-toolbar>
-        <v-card-text v-if="message === undefined" class="text-h5">Press Logout to confirm</v-card-text>
+        <v-card-text v-if="message === undefined" class="text-h6">You will be logged out</v-card-text>
         <v-card-text v-if="message !== undefined" >{{message}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="red" @click="dialog=false">Go Back</v-btn>
-          <v-btn class="success" :disabled="disabled" @click="logout_request" >Logout</v-btn>
+          <v-btn class="grey" @click="dialog=false">Go Back</v-btn>
+          <v-btn  :disabled="disabled" @click="logout_request" >Logout</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

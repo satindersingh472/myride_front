@@ -26,14 +26,33 @@
             :type="show ? 'text' : 'password'"
             @click:append="show = !show"
           ></v-text-field>
-          <h3 v-if="message !== undefined" >{{message}}</h3>
+          <h3 v-if="message !== undefined">{{ message }}</h3>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- will perform dialog hide password field reset password field hide on click -->
-          <v-btn @click="dialog=false;$refs['password'].reset();show=false" >go back</v-btn>
+          <v-btn
+            class="grey"
+            @click="
+              dialog = false
+              $refs['password'].reset()
+              show = false
+            "
+          >
+            go back
+          </v-btn>
           <!-- will run api request button disable password field reset password field hide-->
-          <v-btn class="grey" :disabled="disabled" @click="disabled=true;delete_account();$refs['password'].reset();show=false" >confirm</v-btn>
+          <v-btn
+            :disabled="disabled"
+            @click="
+              disabled = true
+              delete_account()
+              $refs['password'].reset()
+              show = false
+            "
+          >
+            confirm
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -44,19 +63,18 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 export default {
-
   methods: {
     delete_account() {
       axios
-        .request({ url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
-        method: 'DELETE',
-        headers: {
-            token:cookies.get('token')
-        },
-        data:{
-            password: this.password
-        }
-        
+        .request({
+          url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
+          method: 'DELETE',
+          headers: {
+            token: cookies.get('token'),
+          },
+          data: {
+            password: this.password,
+          },
         })
         // upon success remove cookies and push the router to home
         .then((response) => {
@@ -65,7 +83,7 @@ export default {
           cookies.remove('token')
           setTimeout(() => {
             this.$router.push('/')
-          }, 2000);
+          }, 2000)
         })
         // on error show a message and after 2 seconds button will be enabled and message will be gone
         .catch((error) => {
@@ -73,7 +91,7 @@ export default {
           setTimeout(() => {
             this.disabled = false
             this.message = undefined
-          }, 2000);
+          }, 2000)
         })
     },
   },
@@ -84,7 +102,7 @@ export default {
       dialog: false,
       password: undefined,
       disabled: false,
-      message: undefined
+      message: undefined,
     }
   },
 }

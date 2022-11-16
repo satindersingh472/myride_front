@@ -28,9 +28,8 @@
 
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="success" @click="dialog = false">Cancel</v-btn>
+            <v-btn class="grey" @click="dialog = false">Cancel</v-btn>
             <v-btn
-              class="red darken-3"
               :disabled="disabled"
               @click="delete_ride"
             >

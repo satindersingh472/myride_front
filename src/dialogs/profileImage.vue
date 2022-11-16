@@ -24,7 +24,7 @@
             class="mt-5 ml-5"
             x-small
             @click="
-              dialog = true;
+              dialog = true
               disabled = false
             "
           >
@@ -47,23 +47,19 @@
             persistent-hint
           ></v-file-input>
         </v-card-text>
-        <v-card-text v-if="message !== undefined">{{message}}</v-card-text>
+        <v-card-text v-if="message !== undefined">{{ message }}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            class="error"
+            class="grey"
             @click="
-              dialog = false;
+              dialog = false
               image_upload = undefined
             "
           >
             cancel
           </v-btn>
-          <v-btn
-            class="success"
-            :disabled="disabled"
-            @click="patch_image"
-          >
+          <v-btn :disabled="disabled" @click="patch_image">
             save
           </v-btn>
         </v-card-actions>
@@ -77,10 +73,9 @@ import axios from 'axios'
 import cookies from 'vue-cookies'
 
 export default {
-
-mounted () {
+  mounted() {
     this.grab_image()
-},
+  },
 
   methods: {
     grab_image() {
@@ -99,7 +94,7 @@ mounted () {
           this.image = undefined
         })
     },
-       patch_image() {
+    patch_image() {
       axios
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client_image`,
@@ -117,25 +112,25 @@ mounted () {
           this.disabled = true
           this.dialog = false
           this.image_upload = undefined
-            this.image = URL.createObjectURL(response['data'])
+          this.image = URL.createObjectURL(response['data'])
         })
         .catch((error) => {
           this.message = error['response']['data']
-          this.disabled= true
+          this.disabled = true
           this.image_upload = undefined
           setTimeout(() => {
             this.message = undefined
-            this.disabled=false
-          }, 2000);
+            this.disabled = false
+          }, 2000)
         })
     },
   },
   data() {
     return {
-        image: undefined,
-        dialog: false,
-        disabled: true,
-        image_upload: undefined,
+      image: undefined,
+      dialog: false,
+      disabled: true,
+      image_upload: undefined,
     }
   },
 }

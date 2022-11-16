@@ -35,7 +35,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            class="red darken-3 white--text"
+            class="grey"
             @click="
               dialog = false
               disabled = false
@@ -43,7 +43,7 @@
           >
             Go Back
           </v-btn>
-          <v-btn class="success" :disabled="disabled" @click="post_ride">
+          <v-btn :disabled="disabled" @click="post_ride">
             Confirm
           </v-btn>
         </v-card-actions>
@@ -88,7 +88,7 @@ export default {
           this.$root.$emit('success_response', true)
           setTimeout(() => {
             this.dialog = false
-          }, 1500);
+          }, 1500)
         })
         .catch((error) => {
           this.message = error['response']['data']
