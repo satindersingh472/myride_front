@@ -11,6 +11,7 @@
         <v-col cols="12" lg="8">
           <v-card class="pa-2 rounded-lg">
             <v-row justify="end">
+              <delete-account class="ma-3"></delete-account>
               <change-password class="ma-3" ></change-password>
               <v-btn
                 class="ma-3"
@@ -132,10 +133,12 @@ import axios from 'axios'
 import cookies from 'vue-cookies'
 import ProfileImage from '@/dialogs/profileImage.vue'
 import ChangePassword from '@/dialogs/changePassword.vue'
+import DeleteAccount from '@/dialogs/deleteAccount.vue'
 export default {
   components: {
     ProfileImage,
-    ChangePassword
+    ChangePassword,
+    DeleteAccount
   },
 
   mounted() {

@@ -35,10 +35,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <!-- on click will cancel the change and goback -->
-          <v-btn class="error" @click="dialog = false;reset()">
+          <v-btn class="error" @click="dialog = false;reset();show=false;show_two=false">
             Go back
           </v-btn>
-          <v-btn class="success" :disabled="disabled" @click="change_password">
+          <v-btn class="success" :disabled="disabled" @click="change_password();show=false;show_two=false">
             Save
           </v-btn>
         </v-card-actions>
@@ -80,6 +80,7 @@ export default {
           this.message = response['data']
         //   save button disabled
           this.disabled = true
+          
           setTimeout(() => {
             // after 2 seconds response disappear
             this.message = undefined
@@ -87,6 +88,7 @@ export default {
             this.dialog = false
             // button save is back
             this.disabled = false
+          
           }, 2000)
         })
         .catch((error) => {
@@ -96,6 +98,7 @@ export default {
           this.message = error['response']['data']
         //   button is disabled
           this.disabled = true
+        
           setTimeout(() => {
             // after 2 seconds message is gone
             this.message = undefined
