@@ -11,6 +11,7 @@
         <v-col cols="12" lg="8">
           <v-card class="pa-2 rounded-lg">
             <v-row justify="end">
+              <change-password class="ma-3" ></change-password>
               <v-btn
                 class="ma-3"
                 @click="
@@ -130,9 +131,11 @@
 import axios from 'axios'
 import cookies from 'vue-cookies'
 import ProfileImage from '@/dialogs/profileImage.vue'
+import ChangePassword from '@/dialogs/changePassword.vue'
 export default {
   components: {
     ProfileImage,
+    ChangePassword
   },
 
   mounted() {

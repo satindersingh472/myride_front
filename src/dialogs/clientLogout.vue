@@ -44,11 +44,10 @@ export default {
             token: cookies.get('token'),
           },
         })
-        // on success delete the cookies
+        // on success delete the cookies and dialog disappear and router changed to home
         .then(() => {
           cookies.remove('token')
           cookies.remove('client_id')
-          this.disabled = true
           this.dialog = false
           this.$router.push('/')
         })
