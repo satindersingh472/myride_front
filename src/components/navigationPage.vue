@@ -39,15 +39,15 @@
                 </v-col>
               </v-list-item>
             </router-link>
-            <router-link class="text-decoration-none" to="/personal_profile" >
-            <v-list-item>
-              <v-col>
-                <v-icon color="green" x-large>mdi-account</v-icon>
-              </v-col>
-              <v-col>
-                <v-list-item-title>Profile</v-list-item-title>
-              </v-col>
-            </v-list-item>
+            <router-link class="text-decoration-none" to="/personal_profile">
+              <v-list-item>
+                <v-col>
+                  <v-icon color="green" x-large>mdi-account</v-icon>
+                </v-col>
+                <v-col>
+                  <v-list-item-title>Profile</v-list-item-title>
+                </v-col>
+              </v-list-item>
             </router-link>
             <v-divider />
             <router-link
@@ -135,32 +135,12 @@ export default {
       this.cookies_present = response
       this.drawer = false
     },
-
-    // get_profile() {
-    //   axios
-    //     .request({
-    //       url: `${process.env.VUE_APP_BASE_DOMAIN}/api/client`,
-    //       params: {
-    //         client_id: cookies.get('client_id'),
-    //       },
-    //     })
-    //     .then((response) => {
-    //       this.details = response['data']
-          
-    //     })
-    //     .catch((error) => {
-    //       this.message = error['response']['data']
-    //     })
-    // },
   },
 
   data() {
     return {
       shrink: true,
       drawer: false,
-      // details: undefined,
-      // message: undefined,
-      // message_two: undefined,
       cookies_present: true,
     }
   },

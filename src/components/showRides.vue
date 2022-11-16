@@ -5,12 +5,14 @@
       <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
       <v-row justify="center" align="end" class="mt-4">
         <v-card>
-        <v-col cols="12" >
-          <h2>{{ message }}</h2>
-        </v-col>
-        <v-col cols="12">
-          <v-btn @click="get_rides"  :disabled="disabled" class="primary">Show upcoming rides</v-btn>
-        </v-col>
+          <v-col cols="12">
+            <h2>{{ message }}</h2>
+          </v-col>
+          <v-col cols="12">
+            <v-btn @click="get_rides" :disabled="disabled" class="primary">
+              Show upcoming rides
+            </v-btn>
+          </v-col>
         </v-card>
       </v-row>
     </div>
@@ -87,7 +89,7 @@ export default {
         })
         // on success catch the response
         .then((response) => {
-          // this will erase the previous message due to other errors 
+          // this will erase the previous message due to other errors
           this.message = undefined
           this.details = response['data']
         })
@@ -100,7 +102,7 @@ export default {
     return {
       message: undefined,
       details: undefined,
-      disabled: false
+      disabled: false,
     }
   },
 }

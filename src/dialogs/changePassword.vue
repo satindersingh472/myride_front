@@ -40,7 +40,7 @@
           <v-spacer></v-spacer>
           <!-- on click will cancel the change and goback -->
           <v-btn
-          class="grey"
+            class="grey"
             @click="
               dialog = false
               reset()
@@ -51,7 +51,6 @@
             Go back
           </v-btn>
           <v-btn
-          
             :disabled="disabled"
             @click="
               change_password()

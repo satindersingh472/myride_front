@@ -1,18 +1,17 @@
 <template>
   <div>
-   
-    
     <div v-if="message !== undefined">
-      <v-row justify="center" >
-        <p class="primary--text my-5 text-h4" >{{message}}</p>
+      <v-row justify="center">
+        <p class="primary--text my-5 text-h4">{{ message }}</p>
       </v-row>
     </div>
 
-
-    <v-container v-if="message === undefined" >
+    <v-container v-if="message === undefined">
       <v-row class="my-5" justify="center">
-      <p class="my-5 primary--text text-h4">Details and Bookings for  Ride ID:{{ details[0]['ride_id'] }}</p>
-    </v-row>
+        <p class="my-5 primary--text text-h4">
+          Details and Bookings for Ride ID:{{ details[0]['ride_id'] }}
+        </p>
+      </v-row>
       <v-row justify="center">
         <v-col
           cols="10"
@@ -40,7 +39,7 @@
                 <!-- this component will patch the rides for rider for example
                 will show different button based on status on the booking
                 and also will expect prop so that it can work -->
-                <patch-booking-rider :detail="detail" ></patch-booking-rider>
+                <patch-booking-rider :detail="detail"></patch-booking-rider>
               </v-col>
             </v-row>
           </v-card>
@@ -56,13 +55,13 @@ import cookies from 'vue-cookies'
 // import NavigationPage from '@/components/navigationPage.vue'
 import PatchBookingRider from '@/components/patchBookingRider.vue'
 export default {
-  components: { 
-     PatchBookingRider 
-     },
+  components: {
+    PatchBookingRider,
+  },
   mounted() {
     this.get_ride_details()
-       // emit the response so that components that needs this response will get false value
-    this.$root.$emit('cookies_presence',true)
+    // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence', true)
   },
 
   methods: {
@@ -89,7 +88,7 @@ export default {
   data() {
     return {
       details: undefined,
-      message: undefined
+      message: undefined,
     }
   },
 }

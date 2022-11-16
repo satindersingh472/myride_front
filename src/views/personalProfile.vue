@@ -12,7 +12,7 @@
           <v-card class="pa-2 rounded-lg">
             <v-row justify="end">
               <delete-account class="ma-3"></delete-account>
-              <change-password class="ma-3" ></change-password>
+              <change-password class="ma-3"></change-password>
               <v-btn
                 class="ma-3"
                 @click="
@@ -138,7 +138,7 @@ export default {
   components: {
     ProfileImage,
     ChangePassword,
-    DeleteAccount
+    DeleteAccount,
   },
 
   mounted() {
@@ -163,7 +163,7 @@ export default {
         })
     },
 
-// api request for patch request for a profile
+    // api request for patch request for a profile
     edit_profile() {
       axios
         .request({

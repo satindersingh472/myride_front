@@ -4,14 +4,10 @@
     <v-row class="mr-2 my-3" justify="end">
       <!-- this button is attached to an event and send the request to an api
       this button only exists if booking is not yet confirmed if booking is confirmed then this -->
-      <v-btn
-      v-show="not_confirmed"
-        class="warning"
-        @click="confirm_booking"
-      >
+      <v-btn v-show="not_confirmed" class="warning" @click="confirm_booking">
         confirm Booking
       </v-btn>
-<!-- this button will be shown  when booking is confirmed-->
+      <!-- this button will be shown  when booking is confirmed-->
       <v-btn v-show="confirmed" class="success">
         Booking Confirmed
       </v-btn>
@@ -29,22 +25,15 @@
         </v-btn>
       </v-badge>
       <!-- this button will be shown when booking can be complete means when it is confirmed but not complete yet -->
-      <v-btn
-        v-show="not_completed"
-        class="warning"
-        @click="complete_booking"
-      >
+      <v-btn v-show="not_completed" class="warning" @click="complete_booking">
         Complete Booking
       </v-btn>
       <!-- this is shown when booking is complete -->
-      <v-btn
-        v-show="completed"
-        class="success"
-      >
+      <v-btn v-show="completed" class="success">
         Booking Completed
       </v-btn>
       <!-- if any error occurs during api request -->
-      <h3 v-if="message !== undefined" >{{message}}</h3>
+      <h3 v-if="message !== undefined">{{ message }}</h3>
     </v-row>
   </div>
 </template>
@@ -56,25 +45,32 @@ export default {
   props: {
     detail: Object,
   },
-  mounted () {
-
+  mounted() {
     // if booking is confirmed and completed then confirmed and complete will be true
     // this will show the green buttons for confirm and complete
-    if(this.detail['is_confirmed'] === 1 && this.detail['is_completed'] === 1){
+    if (
+      this.detail['is_confirmed'] === 1 &&
+      this.detail['is_completed'] === 1
+    ) {
       this.confirmed = true
       this.completed = true
-    // if booking confirmed but not completed then confirmed is true and not completed is true
-    // this will status green for confirmed but complete button booking will be available to make a request
-    } else if(this.detail['is_confirmed'] === 1 && this.detail['is_completed'] === 0){
+      // if booking confirmed but not completed then confirmed is true and not completed is true
+      // this will status green for confirmed but complete button booking will be available to make a request
+    } else if (
+      this.detail['is_confirmed'] === 1 &&
+      this.detail['is_completed'] === 0
+    ) {
       this.confirmed = true
       this.not_completed = true
-    // if booking not confirmed and not completed then not confirmed will be orange and can make request to confirm
-    // and complete button will be disabled so that it will activate when booking is confirmed
-    } else if(this.detail['is_confirmed'] === 0 && this.detail['is_completed'] === 0){
+      // if booking not confirmed and not completed then not confirmed will be orange and can make request to confirm
+      // and complete button will be disabled so that it will activate when booking is confirmed
+    } else if (
+      this.detail['is_confirmed'] === 0 &&
+      this.detail['is_completed'] === 0
+    ) {
       this.not_confirmed = true
       this.confirmed_incomplete = true
     }
-
   },
 
   methods: {
@@ -89,12 +85,12 @@ export default {
           },
           data: {
             booking_id: this.detail['booking_id'],
-            is_confirmed: 'true'
+            is_confirmed: 'true',
           },
         })
         // on success these values will be changed
         .then((response) => {
-          if(response['data']['is_confirmed'] === 1){
+          if (response['data']['is_confirmed'] === 1) {
             this.confirmed = true
             this.not_confirmed = false
             this.confirmed_incomplete = false
@@ -107,8 +103,8 @@ export default {
         })
     },
 
-    // api request for complete booking 
-     complete_booking() {
+    // api request for complete booking
+    complete_booking() {
       axios
         .request({
           url: `${process.env.VUE_APP_BASE_DOMAIN}/api/booking_rider`,
@@ -118,12 +114,12 @@ export default {
           },
           data: {
             booking_id: this.detail['booking_id'],
-            is_completed: 'true'
+            is_completed: 'true',
           },
         })
         // on success these values will be changed
         .then((response) => {
-          if(response['data']['is_completed'] === 1){
+          if (response['data']['is_completed'] === 1) {
             this.completed = true
             this.not_completed = false
             this.confirmed_incomplete = false
@@ -142,7 +138,7 @@ export default {
       completed: false,
       not_completed: false,
       confirmed_incomplete: false,
-      message: undefined
+      message: undefined,
     }
   },
 }

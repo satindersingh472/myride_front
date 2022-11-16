@@ -4,15 +4,15 @@
     <div v-if="message !== undefined">
       <!-- will show the message on error and it will also help the emit event to pass error pass message  -->
       <v-row justify="center" align="end">
-        <p class="primary--text my-5 text-h4 " >{{ message }}</p>
+        <p class="primary--text my-5 text-h4">{{ message }}</p>
       </v-row>
     </div>
     <v-container v-if="message === undefined">
-          <v-row justify="center">
-      <div>
-        <p class="my-5 primary--text text-h4">Your Posted Rides</p>
-      </div>
-    </v-row>
+      <v-row justify="center">
+        <div>
+          <p class="my-5 primary--text text-h4">Your Posted Rides</p>
+        </div>
+      </v-row>
       <v-row justify="start">
         <v-col
           cols="10"
@@ -40,16 +40,23 @@
               <h3>Ride ID: {{ detail['ride_id'] }}</h3>
             </div>
             <div>
-              
               <v-row justify="end">
                 <!-- btn for view bookings -->
-                <v-btn  class="success mr-6 mb-6" @click="view_bookings(detail,$event)">View Bookings</v-btn>
+                <v-btn
+                  class="success mr-6 mb-6"
+                  @click="view_bookings(detail, $event)"
+                >
+                  View Bookings
+                </v-btn>
               </v-row>
               <!-- component for editing rides -->
-              <edit-ride  @edit_response="replace_details(index,$event)" :detail="detail" ></edit-ride>
+              <edit-ride
+                @edit_response="replace_details(index, $event)"
+                :detail="detail"
+              ></edit-ride>
               <!-- sending a prop for deleting and expecting an event and it will delete the ride
                 after a successfull response from the ridedelete component -->
-                <!-- this component will delete the ride itself -->
+              <!-- this component will delete the ride itself -->
               <ride-delete
                 @delete_ride_response="index_splice(index, $event)"
                 :ride_id="detail['ride_id']"
@@ -64,12 +71,12 @@
 
 <script>
 import RideDelete from '@/dialogs/rideDelete.vue'
-import EditRide from "@/dialogs/editRide.vue"
+import EditRide from '@/dialogs/editRide.vue'
 import cookies from 'vue-cookies'
 export default {
   components: {
     RideDelete,
-    EditRide
+    EditRide,
   },
 
   mounted() {
@@ -93,17 +100,14 @@ export default {
       this.details.splice(index, 1)
     },
     // this will change the content on the page
-    replace_details(index,detail){
-        this.details.splice(index,1,detail)
+    replace_details(index, detail) {
+      this.details.splice(index, 1, detail)
     },
-  // this will set the cookies ride id so that we can use to send an api request
-    view_bookings(detail){
-      cookies.set('ride_id',detail['ride_id'])
+    // this will set the cookies ride id so that we can use to send an api request
+    view_bookings(detail) {
+      cookies.set('ride_id', detail['ride_id'])
       this.$router.push('/rider_bookings')
     },
-  
-
-
   },
   data() {
     return {

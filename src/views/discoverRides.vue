@@ -10,8 +10,8 @@
           <search-rides></search-rides>
         </v-col>
         <v-col>
-          <v-row justify="center" >
-            <h1 class="my-5 grey--text text-h4" >Upcoming Rides</h1>
+          <v-row justify="center">
+            <h1 class="my-5 grey--text text-h4">Upcoming Rides</h1>
           </v-row>
           <show-rides></show-rides>
         </v-col>
@@ -30,9 +30,9 @@ export default {
     SearchRides,
     ShowRides,
   },
-  mounted () {
-   // emit the response so that components that needs this response will get false value
-    this.$root.$emit('cookies_presence',true)
+  mounted() {
+    // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence', true)
   },
 }
 </script>

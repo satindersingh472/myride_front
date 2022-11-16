@@ -29,10 +29,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn class="grey" @click="dialog = false">Cancel</v-btn>
-            <v-btn
-              :disabled="disabled"
-              @click="delete_ride"
-            >
+            <v-btn :disabled="disabled" @click="delete_ride">
               Confirm
             </v-btn>
           </v-card-actions>
@@ -66,10 +63,9 @@ export default {
         .then((response) => {
           this.message = response['data']
           this.disabled = true
-            this.$emit('delete_ride_response', this.ride_id)
+          this.$emit('delete_ride_response', this.ride_id)
           setTimeout(() => {
             this.dialog = false
-         
           }, 1500)
         })
         .catch((error) => {
