@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- this component will act as notification panel for pages
-    and it will send two api requests one for image in the corner and the other for the name
-    in the notification panel -->
+    <!-- this component will act as notification panel for pages -->
     <div>
       <v-app-bar :value="cookies_present" app clipped-left>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -114,8 +112,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
-// import cookies from 'vue-cookies'
 import ClientLogout from '@/dialogs/clientLogout.vue'
 export default {
   components: {
@@ -125,11 +121,7 @@ export default {
   // every component will emit the response and let the navigation page know about cookies if no cookies then no navigation page component
   mounted() {
     this.$root.$on('cookies_presence', this.change_cookies)
-
-    this.get_profile()
-    // this.get_only_image()
   },
-
   methods: {
     change_cookies(response) {
       this.cookies_present = response
