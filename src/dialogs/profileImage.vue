@@ -76,7 +76,6 @@ export default {
   mounted() {
     this.grab_image()
   },
-
   methods: {
     grab_image() {
       axios
@@ -131,6 +130,7 @@ export default {
       dialog: false,
       disabled: true,
       image_upload: undefined,
+      message: undefined
     }
   },
 }

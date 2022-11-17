@@ -4,11 +4,11 @@
     <div>
       <v-app-bar :value="cookies_present" app clipped-left>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-app-title
+        <v-app-bar-title
           class="text-h4 font-weight-bold yellow--text text--darken-3"
         >
           MyRide
-        </v-app-title>
+        </v-app-bar-title>
         <v-spacer />
       </v-app-bar>
       <!-- this is the side notification for the page in which various navigations are attached -->

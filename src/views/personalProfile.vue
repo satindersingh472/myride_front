@@ -143,7 +143,6 @@ export default {
 
   mounted() {
     this.grab_details()
-    this.grab_image()
   },
   methods: {
     // api request to grab the profile information
