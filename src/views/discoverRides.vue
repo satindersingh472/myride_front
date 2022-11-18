@@ -2,9 +2,6 @@
   <div>
     <!-- this component is using navigation search and show rides component to show the rides and search option and navigation -->
     <v-row>
-      <v-col cols="1">
-        <!-- <navigation-page></navigation-page> -->
-      </v-col>
       <v-col>
         <v-col>
           <search-rides></search-rides>

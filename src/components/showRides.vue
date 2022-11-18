@@ -17,10 +17,9 @@
       </v-row>
     </div>
     <v-container v-if="message === undefined">
-      <v-row justify="start">
+      <v-row justify="center">
         <v-col
-          cols="10"
-          lg="5"
+          cols="12"
           md="6"
           v-for="(detail, index) in details"
           :key="index"

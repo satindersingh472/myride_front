@@ -133,7 +133,7 @@ export default {
     return {
       shrink: true,
       drawer: false,
-      cookies_present: true,
+      cookies_present: false,
     }
   },
 }

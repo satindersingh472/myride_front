@@ -149,6 +149,8 @@ export default {
 
   mounted() {
     this.grab_details()
+        // emit the response so that components that needs this response will get false value
+    this.$root.$emit('cookies_presence', true)
   },
   methods: {
     // api request to grab the profile information
