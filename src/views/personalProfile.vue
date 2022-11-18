@@ -7,8 +7,8 @@
       </v-row>
     </div>
     <div v-if="message_profile !== undefined" >
-      <v-row>
-        <h1>Please Confirm Your email to see details of your profile</h1>
+      <v-row justify="center" >
+        <h1 class="my-10" >Please Confirm Your email to see details of your profile</h1>
       </v-row>
     </div>
     <v-container v-if="message_profile === undefined" >
