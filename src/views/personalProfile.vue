@@ -6,7 +6,12 @@
         <p class="primary--text my-5 text-h4">Profile</p>
       </v-row>
     </div>
-    <v-container>
+    <div v-if="message_profile !== undefined" >
+      <v-row>
+        <h1>Please Confirm Your email to see details of your profile</h1>
+      </v-row>
+    </div>
+    <v-container v-if="message_profile === undefined" >
       <v-row justify="center">
         <v-col cols="12" lg="8">
           <v-card class="pa-2 rounded-lg">
@@ -117,6 +122,7 @@
                     >
                       save changes
                     </v-btn>
+                    <p v-if="message !== undefined" ></p>
                   </v-row>
                 </v-form>
               </v-col>
@@ -158,7 +164,7 @@ export default {
           this.details = response['data']
         })
         .catch((error) => {
-          this.message = error['response']['data']
+          this.message_profile = error['response']['data']
         })
     },
 
@@ -187,6 +193,9 @@ export default {
         })
         .catch((error) => {
           this.message = error['response']['data']
+          setTimeout(() => {
+            this.message = undefined
+          }, 2000);
         })
     },
   },
@@ -204,7 +213,8 @@ export default {
       dialog_image: false,
       image_upload: undefined,
       disabled_image_btn: false,
-      message_error_image: undefined,
+      message: undefined,
+      message_profile: undefined
     }
   },
 }
