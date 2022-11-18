@@ -58,6 +58,8 @@ export default {
         })
         // after a response emit the global event and send the data to show rides components
         .then((response) => {
+          // will send message undefined so the error will get erased and the new data will be shown
+          this.$root.$emit('search_response_error',undefined)
           this.$root.$emit('search_response', response['data'])
         })
         // on error emit the event to show the error message
