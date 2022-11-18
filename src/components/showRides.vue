@@ -31,16 +31,16 @@
               </p>
             </v-card-title>
             <v-card-subtitle class="text-sm-h5">
-              <h2>Arrival: {{ detail['to_city'] }},{{ detail['to_prov'] }}</h2>
+              <h2>To: {{ detail['to_city'] }},{{ detail['to_prov'] }}</h2>
             </v-card-subtitle>
             <div class="mx-4">
               <h2>Driver: {{ detail['rider_first_name'] }}</h2>
             </div>
             <div class="mx-4">
-              <h3>Departure Date: {{ detail['travel_date'] }}</h3>
+              <h3>Travel Date: {{ detail['travel_date'] }}</h3>
             </div>
             <div class="mx-4">
-              <h3>Departure Time: {{ detail['leave_time'] }}</h3>
+              <h3>Leave Time: {{ detail['leave_time'] }}</h3>
             </div>
             <div class="mx-4">
               <h3>Ride ID: {{ detail['ride_id'] }}</h3>
