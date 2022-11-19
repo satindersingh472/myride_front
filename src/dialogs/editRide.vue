@@ -113,7 +113,7 @@
             </div>
             <div>
               <label class="text-h6" for="new_date">New Travel Date:</label>
-              <v-dialog
+              <!-- <v-dialog
                 ref="dialog"
                 v-model="modal"
                 :return-value.sync="date"
@@ -122,7 +122,7 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                  
+                  v-model="date"       
                     label="Choose New Date"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -139,7 +139,8 @@
                     OK
                   </v-btn>
                 </v-date-picker>
-              </v-dialog>
+              </v-dialog> -->
+              <input type="date" v-model="new_date" style="padding:10px;font-size:1.2rem;">
             </div>
             <div>
               <!-- will show the old time and also let us enter the new time -->
@@ -249,6 +250,7 @@ export default {
         .toISOString()
         .substr(0, 10),
       modal: false,
+      new_date:undefined,
 
       // values for time card
       hours: [
@@ -308,7 +310,7 @@ export default {
             from_prov: this.new_from_prov,
             to_city: this.new_to_city,
             to_prov: this.new_to_prov,
-            travel_date: this.date,
+            travel_date: this.new_date,
             leave_time: this.new_leave_time,
           },
         })
