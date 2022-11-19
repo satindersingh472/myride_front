@@ -122,7 +122,7 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="date"
+                  
                     label="Choose New Date"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -206,6 +206,7 @@
               @click="
                 dialog = false
                 clear_all()
+                disabled = false
               "
             >
               Go Back
@@ -300,9 +301,9 @@ export default {
           method: 'PATCH',
           headers: {
             token: cookies.get('token'),
-            ride_id: this.detail['ride_id'],
           },
           data: {
+            ride_id: this.detail['ride_id'],
             from_city: this.new_from_city,
             from_prov: this.new_from_prov,
             to_city: this.new_to_city,
