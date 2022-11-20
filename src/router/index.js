@@ -32,7 +32,7 @@ const routes = [
       },
       {
         name: "keywords",
-        content: "easy to find rides, people first,accessible,affordable",
+        content: "available_rides, cheap_rides, affordable_way_of_travelling, safe_rides, reliable_rides, travelling, riders, passengers",
       },
     ],
   },
@@ -49,11 +49,11 @@ const routes = [
       },
       {
         name: "description",
-        content: "latest rides from various cities and affordable rides",
+        content: "See the upcoming rides from one place to another and also search any upcoming rides with the help of search option.",
       },
       {
         name: "keywords",
-        content: "myride,easy,affordable",
+        content: "search_rides, available_rides, upcoming_rides, affordable_rides, cheap_rides, safe_rides, people_helping_people ",
       },
     ],
   },
