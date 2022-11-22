@@ -17,6 +17,9 @@
         app
         v-model="drawer"
         clipped
+        disable-resize-watcher
+        disable-route-watcher
+        
       >
         <v-list class="text-h6">
           <v-list-item-group>
