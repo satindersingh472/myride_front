@@ -111,6 +111,7 @@ export default {
           this.disabled = true
           this.dialog = false
           this.image_upload = undefined
+          console.log(response)
           this.image = URL.createObjectURL(response['data'])
         })
         .catch((error) => {
